@@ -283,8 +283,9 @@ def parse_arguments():
     parser.add_argument('--target-text', type=str, default='', help='Filter by target text (optional)')
     parser.add_argument('--wait-time', type=int, default=5, help='Wait time for page load in seconds')
     return parser.parse_args()
-# Pytest Tests
-# -----------------------
+def sanitize_url(url: str) -> str:
+    """Sanitize the URL to create a valid directory name."""
+    return re.sub(r'[^a-zA-Z0-9]', '_', url)
 
 @pytest.fixture(scope="module")
 def collector():
