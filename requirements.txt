@@ -1,5 +1,7 @@
 pandas
 langsmith
-argparse
+selenium
+webdriver-manager
+pytest
 webdriver-manager
 streamlit

@@ -1,3 +1,4 @@
+import argparse
 import json
 import time
 from typing import List, Dict
@@ -275,7 +276,13 @@ class GA4EventCollector:
         self.driver.quit()
 
 
-# -----------------------
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='GA4 Events Scanner')
+    parser.add_argument('--url', type=str, required=True, help='URL to scan')
+    parser.add_argument('--section-selector', type=str, default='body', help='CSS selector for the section to scan')
+    parser.add_argument('--target-text', type=str, default='', help='Filter by target text (optional)')
+    parser.add_argument('--wait-time', type=int, default=5, help='Wait time for page load in seconds')
+    return parser.parse_args()
 # Pytest Tests
 # -----------------------
 
@@ -324,13 +331,18 @@ def test_click_generates_ga4_event(collector):
 # -----------------------
 
 if __name__ == "__main__":
+    args = parse_arguments()
     collector = GA4EventCollector()
     try:
-        url = "https://www.rangerover.com/de-de/range-rover/index.html"
-        # Use target_text=None for class-based filtering.
-        events = collector.collect_events_from_url(url, section_selector="body", target_text=None)
+        events = collector.collect_events_from_url(
+            url=args.url,
+            section_selector=args.section_selector,
+            target_text=args.target_text,
+            wait_time=args.wait_time
+        )
+        sanitized_url = sanitize_url(args.url)
+        collector.export_events(f"data_to_analysis/output_data/{sanitized_url}/gtm_and_ga4_events")
         print(f"\nCollected dataLayer events: {len(events['dataLayer'])}")
         print(f"Collected GA4 events: {len(events['ga4'])}")
-        collector.export_events("gtm_and_ga4_events")
     finally:
         collector.close()

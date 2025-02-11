@@ -1,5 +1,5 @@
 import streamlit as st
-import subprocess
+from data_to_analysis.GA4_events_scaner import GA4EventCollector
 import os
 import re
 import json
@@ -8,7 +8,9 @@ def sanitize_url(url: str) -> str:
     """Sanitize the URL to create a valid directory name."""
     return re.sub(r'[^a-zA-Z0-9]', '_', url)
 
-def main():
+def sanitize_url(url: str) -> str:
+    """Sanitize the URL to create a valid directory name."""
+    return re.sub(r'[^a-zA-Z0-9]', '_', url)
     st.title("GA4 Events Scanner")
 
     url = st.text_input("Enter the URL to scan:", "")
@@ -28,28 +30,25 @@ def main():
         # Ensure output directory exists (optional, as script creates it)
         os.makedirs(output_dir, exist_ok=True)
 
-        # Define the command to run the GA4_events_scaner.py script
-        command = [
-            "python",
-            "data_to_analysis/GA4_events_scaner.py",
-            "--url", url,
-            "--section-selector", section_selector,
-            "--target-text", target_text,
-            "--wait-time", str(wait_time)
-        ]
-
-        # Execute the script
+        # Execute the GA4EventCollector directly
         with st.spinner("Collecting events..."):
             try:
-                subprocess.run(command, check=True)
+                collector = GA4EventCollector()
+                events = collector.collect_events_from_url(
+                    url=url,
+                    section_selector=section_selector,
+                    target_text=target_text,
+                    wait_time=wait_time
+                )
+                collector.export_events(os.path.join(output_dir, 'gtm_and_ga4_events'))
                 st.success("Scanning completed.")
             except subprocess.CalledProcessError as e:
-                st.error(f"An error occurred while running GA4_events_scaner.py: {e}")
+                st.error(f"An error occurred while collecting events: {e}")
                 return
 
         # Define paths to the output files
-        data_layer_json_path = os.path.join(output_dir, 'events_dataLayer.json')
-        ga4_json_path = os.path.join(output_dir, 'events_GA4.json')
+        data_layer_json_path = os.path.join(output_dir, 'gtm_and_ga4_events_dataLayer.json')
+        ga4_json_path = os.path.join(output_dir, 'gtm_and_ga4_events_GA4.json')
 
         # Check if output files exist
         if not os.path.exists(data_layer_json_path) or not os.path.exists(ga4_json_path):
