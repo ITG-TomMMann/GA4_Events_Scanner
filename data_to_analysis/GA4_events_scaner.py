@@ -266,7 +266,7 @@ class GA4EventCollector:
         Export dataLayer events and parsed GA4 events to separate files.
         For GA4 events, we parse the URL to extract, for example, event_label.
         """
-        # Export dataLayer events.
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         dl_serializable = make_serializable(self.events)
         with open(f"{filename}_dataLayer.json", 'w', encoding='utf-8') as f:
             json.dump(dl_serializable, f, indent=2, ensure_ascii=False)
