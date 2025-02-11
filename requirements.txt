@@ -1,3 +1,5 @@
 pandas
 langsmith
 argparse
+webdriver-manager
+streamlit

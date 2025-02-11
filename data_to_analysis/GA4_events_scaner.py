@@ -1,6 +1,7 @@
 import json
 import time
 import os
+import shutil
 import re
 import concurrent.futures
 import copy
@@ -11,6 +12,8 @@ import tempfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -83,8 +86,8 @@ class GA4EventCollector:
         self.user_data_dir = tempfile.mkdtemp()
         chrome_options.add_argument(f'--user-data-dir={self.user_data_dir}')
         chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-        # Initialize ChromeDriver
-        service = Service('path/to/your/chromedriver')  # Replace with actual path
+        # Initialize ChromeDriver using webdriver-manager
+        service = Service(ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
         self.events = []      # Captured dataLayer events.
         self.ga4_events = []  # Captured raw GA4 network events.
