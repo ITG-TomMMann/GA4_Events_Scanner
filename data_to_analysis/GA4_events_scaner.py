@@ -7,7 +7,9 @@ import copy
 from typing import List, Dict
 from urllib.parse import urlparse, parse_qs
 import pandas as pd
+import tempfile
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -74,9 +76,16 @@ class GA4EventCollector:
     def __init__(self):
         chrome_options = Options()
         chrome_options.add_argument('--headless')  # Run in headless mode.
-        # Enable performance logging.
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--no-sandbox')
+        
+        # Create a unique temporary user data directory for each session
+        self.user_data_dir = tempfile.mkdtemp()
+        chrome_options.add_argument(f'--user-data-dir={self.user_data_dir}')
         chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-        self.driver = webdriver.Chrome(options=chrome_options)
+        # Initialize ChromeDriver
+        service = Service('path/to/your/chromedriver')  # Replace with actual path
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
         self.events = []      # Captured dataLayer events.
         self.ga4_events = []  # Captured raw GA4 network events.
         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)  # Adjust `max_workers` as needed
@@ -276,7 +285,8 @@ class GA4EventCollector:
         df_ga4.to_csv(f"{filename}_GA4.csv", index=False)
 
     def close(self):
-        """Close the browser."""
+        """Close the browser and shutdown the executor, also remove the temporary user data directory."""
+        shutil.rmtree(self.user_data_dir, ignore_errors=True)
         self.executor.shutdown(wait=True)
         self.driver.quit()
 
