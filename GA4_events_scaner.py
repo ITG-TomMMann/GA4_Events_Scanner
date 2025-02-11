@@ -4,6 +4,7 @@ import time
 from typing import List, Dict
 from urllib.parse import urlparse, parse_qs
 import pandas as pd
+import re
 import pytest
 from selenium import webdriver
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
