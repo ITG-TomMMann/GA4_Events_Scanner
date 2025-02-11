@@ -94,6 +94,15 @@ class GA4EventCollector:
         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=5)  # Adjust `max_workers` as needed
         self.inject_datalayer_collector()
 
+    def get_element_info(self, element: WebElement) -> Dict:
+        """Retrieve information from a WebElement."""
+        return {
+            'element': element,
+            'text': element.text,
+            'classes': element.get_attribute('class') or '',
+            'tag': element.tag_name,
+        }
+
     def inject_datalayer_collector(self):
         """Inject JavaScript to capture dataLayer.push calls into window.collectedEvents."""
         script = """
