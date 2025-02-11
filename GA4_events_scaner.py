@@ -135,17 +135,6 @@ class GA4EventCollector:
         except Exception as e:
             print(f"Error during click on element: {str(e)}")
         return (captured_dl_events, captured_ga4_events)
-        """Return details of an element."""
-        return {
-            'tag_name': element.tag_name,
-            'text': element.text,
-            'classes': element.get_attribute('class'),
-            'href': element.get_attribute('href'),
-            'data-target': element.get_attribute('data-target'),
-            'data-link-type': element.get_attribute('data-link-type'),
-            'aria-label': element.get_attribute('aria-label'),
-            'target': element.get_attribute('target')
-        }
 
     def wait_for_new_event(self, initial_count, timeout=5):
         """Wait until window.collectedEvents grows beyond initial_count."""
