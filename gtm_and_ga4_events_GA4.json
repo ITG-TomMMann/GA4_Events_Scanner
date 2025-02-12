@@ -1,152 +1,74 @@
 [
   {
-    "event_label": "ZUM ANGEBOT :: primary-link hero__primary-cta   icon-arrow-right",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/private-offers.html",
+    "event_label": "EXPLORE OUR VEHICLES :: primary-link hero__primary-cta   icon-arrow-right",
+    "event_action": "https://www.landrover.com/fleet-and-business/vehicle-range/index.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "ZUM ANGEBOT"
+    "button_text": "EXPLORE OUR VEHICLES"
   },
   {
-    "event_label": "IN DIE WARTELISTE EINTRAGEN :: primary-link hero__primary-cta   ",
-    "event_action": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+    "event_label": "EXPLORE OUR VEHICLES :: primary-link hero__primary-cta   icon-arrow-right",
+    "event_action": "https://www.landrover.com/fleet-and-business/vehicle-range/index.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
+    "button_text": "EXPLORE OUR VEHICLES"
   },
   {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": ""
-  },
-  {
-    "event_label": "BLEIBEN SIE INFORMIERT ::  secondary-link  ",
-    "event_action": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmi-de-de",
+    "event_label": "EXPLORE VEHICLES :: cta-content",
+    "event_action": "https://www.landrover.com/fleet-and-business/vehicle-range/index.html",
     "event_category": "nav: cta linkClicks by class",
     "button_text": ""
   },
   {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": ""
-  },
-  {
-    "event_label": "MEHR ERFAHREN :: primary-link hero__primary-cta   icon-arrow-right",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/range-rover-riviera-edition.html",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "MEHR ERFAHREN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
-  },
-  {
-    "event_label": "IN DIE WARTELISTE EINTRAGEN :: cmp-accolades__copy--link secondary-link ",
-    "event_action": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": ""
-  },
-  {
-    "event_label": "IN DIE WARTELISTE EINTRAGEN :: cmp-accolades__copy--link secondary-link ",
-    "event_action": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "IN DIE WARTELISTE EINTRAGEN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": ""
-  },
-  {
-    "event_label": "IN DIE WARTELISTE EINTRAGEN :: cta-content",
-    "event_action": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "VOLLELEKTRISCHEN FAHRSPASS ERLEBEN"
-  },
-  {
-    "event_label": "",
-    "event_action": "",
-    "event_category": "",
-    "button_text": "VOLLELEKTRISCHEN FAHRSPASS ERLEBEN"
-  },
-  {
-    "event_label": "VOLLELEKTRISCHEN FAHRSPASS ERLEBEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/electric/index.html",
+    "event_label": "EXPLORE ELECTRIC FOR BUSINESS :: cta-content",
+    "event_action": "https://www.landrover.com/fleet-and-business/phev.html",
     "event_category": "nav: cta linkClicks by class",
     "button_text": ""
   },
   {
-    "event_label": "KONFIGURATOR :: cta-content",
-    "event_action": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-v8-615-sv_a-sv_a-swb_p/ipr/personalise/model/",
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/emergency-services.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "MODELLE ERKUNDEN"
+    "button_text": "FIND OUT MORE"
   },
   {
-    "event_label": "MODELLE ERKUNDEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/models-and-specifications.html",
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/military-personnel-sales.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/vehicles-for-diplomats.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/land-rover-embassy-sales.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/defender-akip-protection.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: cta-content",
+    "event_action": "https://www.landrover.com/fleet-and-business/our-responsible-future.html",
     "event_category": "nav: cta linkClicks by class",
     "button_text": ""
   },
   {
-    "event_label": "FINANZIERUNGSOPTIONEN ENTDECKEN :: secondary-link ",
-    "event_action": "https://www.landrover.de/finance/index.html",
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/fleet-after-sales.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "FINANZIERUNGSOPTIONEN ENTDECKEN"
+    "button_text": "FIND OUT MORE"
   },
   {
-    "event_label": "KATALOG DURCHSUCHEN :: primary-link icon-dx-search-inventory",
-    "event_action": "https://www.landrover.de/mynext-rangerover",
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.landrover.com/fleet-and-business/fleet-after-sales.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "KATALOG DURCHSUCHEN"
-  },
-  {
-    "event_label": "KATALOG DURCHSUCHEN :: cta-content",
-    "event_action": "https://www.approved.landrover.de/search/#/?model%5B0%5D=range%20rover",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "DESIGN ENTDECKEN"
-  },
-  {
-    "event_label": "DESIGN ENTDECKEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/explore.html#design",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "KULTIVIERTHEIT ENTDECKEN"
-  },
-  {
-    "event_label": "KULTIVIERTHEIT ENTDECKEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/explore.html#refinement",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "TECHNOLOGIE ENTDECKEN"
-  },
-  {
-    "event_label": "TECHNOLOGIE ENTDECKEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/explore.html#technology",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "LEISTUNG ENTDECKEN"
-  },
-  {
-    "event_label": "LEISTUNG ENTDECKEN :: cta-content",
-    "event_action": "https://www.rangerover.com/de-de/range-rover/explore.html#performance",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "ENTDECKEN"
+    "button_text": "FIND OUT MORE"
   }
 ]
