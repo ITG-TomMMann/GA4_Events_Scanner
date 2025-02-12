@@ -1,5 +1,5 @@
 import os
-from langsmith_tracing import trace_api_call
+# from langsmith_tracing import trace_api_call
 
 def process_hypothesis(md_path, output_dir):
     # Read the hypothesis from the Markdown file

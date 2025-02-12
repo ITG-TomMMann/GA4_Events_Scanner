@@ -1,0 +1,25 @@
+prompt: |
+  UPDATE output_format.py:
+      CREATE format_as_html_green_gradient_theme() MIRROR existing methods
+  UPDATE main.py:
+      ADD support for the new html format use .htmlg as the file extension but save the file as .html
+  UPDATE output_format_test.py:
+      ADD test for the new format_as_html_green_gradient_theme() method
+
+coder_model: claude-3-5-haiku-20241022
+
+context_editable:
+  - src/let_the_code_write_itself/main.py
+  - src/let_the_code_write_itself/output_format.py
+  - src/let_the_code_write_itself/tests/output_format_test.py
+
+context_read_only:
+  - src/let_the_code_write_itself/data_types.py
+
+execution_command: uv run pytest src/let_the_code_write_itself/tests --disable-warnings
+
+max_iterations: 5
+
+evaluator_model: gpt-4o
+
+evaluator: default

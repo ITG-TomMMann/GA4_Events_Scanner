@@ -1,0 +1,1042 @@
+[
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-ignite-configure",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-ab_a-swb/ipr/personalise/model/",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 3684
+    },
+    "timestamp": "2025-02-11T15:51:52.998Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-ignite-configure",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "KONFIGURATOR",
+      "gtm.elementUrl": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-ab_a-swb/ipr/personalise/model/",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 4129,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:51:53.099Z"
+  },
+  {
+    "data": {
+      "event": "coreWebVitals",
+      "gtm.uniqueEventId": 5117,
+      "webVitalsMeasurement": {
+        "delta": 980.0999999977648,
+        "deltaRounded": 980,
+        "id": "v4-1739289073905-3358402632092",
+        "name": "LCP",
+        "navigationType": "navigate",
+        "rating": "good",
+        "value": 980.0999999977648,
+        "valueRounded": 980
+      }
+    },
+    "timestamp": "2025-02-11T15:51:53.496Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 5297
+    },
+    "timestamp": "2025-02-11T15:51:56.723Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-ignite-configure",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "KONFIGURATOR",
+      "gtm.elementUrl": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-ab_a-swb/ipr/personalise/model/",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 5742,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:51:56.789Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementUrl": "https://www.landrover.de/mynext-rangerover",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 6730
+    },
+    "timestamp": "2025-02-11T15:52:00.228Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementText": "ZUR NEUFAHRZEUGSUCHE",
+      "gtm.elementUrl": "https://www.landrover.de/mynext-rangerover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 7175,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:00.305Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/private-offers.html",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 7898
+    },
+    "timestamp": "2025-02-11T15:52:09.030Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "ZUM ANGEBOT",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/private-offers.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 8343,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:52:09.103Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 9331
+    },
+    "timestamp": "2025-02-11T15:52:17.923Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 9776
+    },
+    "timestamp": "2025-02-11T15:52:33.963Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "BLEIBEN SIE INFORMIERT",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmi-de-de",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 10221,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:34.036Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/range-rover-riviera-edition.html",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 11209
+    },
+    "timestamp": "2025-02-11T15:52:37.962Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "MEHR ERFAHREN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/range-rover-riviera-edition.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 11654,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:52:38.029Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 12642
+    },
+    "timestamp": "2025-02-11T15:52:41.512Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link hero__primary-cta   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "MEHR ERFAHREN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/range-rover-riviera-edition.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 13087,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:52:41.588Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 14075
+    },
+    "timestamp": "2025-02-11T15:52:45.228Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "IN DIE WARTELISTE EINTRAGEN",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 14520,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:45.582Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 15508
+    },
+    "timestamp": "2025-02-11T15:52:49.308Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "IN DIE WARTELISTE EINTRAGEN",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 15953,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:49.846Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 16941
+    },
+    "timestamp": "2025-02-11T15:52:53.513Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "IN DIE WARTELISTE EINTRAGEN",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 17386,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:53.582Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 18374
+    },
+    "timestamp": "2025-02-11T15:52:57.015Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "cmp-accolades__copy--link secondary-link ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "IN DIE WARTELISTE EINTRAGEN",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 18819,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:52:57.078Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 19807
+    },
+    "timestamp": "2025-02-11T15:53:01.078Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link   ",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "overlay",
+      "gtm.elementText": "IN DIE WARTELISTE EINTRAGEN",
+      "gtm.elementUrl": "https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 20252,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:53:01.341Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/electric/index.html",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 21240
+    },
+    "timestamp": "2025-02-11T15:53:05.053Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "VOLLELEKTRISCHEN FAHRSPASS ERLEBEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/electric/index.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 21685,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:05.119Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 22673
+    },
+    "timestamp": "2025-02-11T15:53:08.568Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "VOLLELEKTRISCHEN FAHRSPASS ERLEBEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/electric/index.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 23118,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:08.639Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 24106
+    },
+    "timestamp": "2025-02-11T15:53:12.711Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link   icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "NORMALER RADSTAND",
+      "gtm.elementUrl": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-v8-615-sv_a-sv_a-swb_p/a-rec-sv-swb-b_n-031zt_n-041cz_n-047db_n-078qv_n-088ur_n-1ga_n-303un/ipr/personalise/model/",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 24551,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:12.785Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 25539
+    },
+    "timestamp": "2025-02-11T15:53:16.877Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link   icon-ignite-configure",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "KONFIGURATOR",
+      "gtm.elementUrl": "https://www.rangerover.com/lr/de_de/l460_k25/_/a-v8-615-sv_a-sv_a-swb_p/ipr/personalise/model/",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 25984,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:16.938Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/models-and-specifications.html",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 26972
+    },
+    "timestamp": "2025-02-11T15:53:20.607Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "MODELLE ERKUNDEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/models-and-specifications.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 27417,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:20.688Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 28405
+    },
+    "timestamp": "2025-02-11T15:53:24.169Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": " secondary-link  None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "MODELLE ERKUNDEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/models-and-specifications.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 28850,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:24.235Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 29838
+    },
+    "timestamp": "2025-02-11T15:53:28.219Z"
+  },
+  {
+    "data": {
+      "event": "gtm.pageError",
+      "gtm.errorLineNumber": 1,
+      "gtm.errorMessage": "Uncaught Error: Syntax error, unrecognized expression: #/quote/l460_k25__4bwkw__a-std-se_a-swb_a-td6-300_d",
+      "gtm.errorUrl": "https://www.rangerover.com/etc.clientlibs/jlr/clientlibs/clientlib-dynamic-modules/resources/vendors-node_modules_jquery_dist_jquery_js.1c6a69b5222e2c10d485.js",
+      "gtm.uniqueEventId": 30283
+    },
+    "timestamp": "2025-02-11T15:53:28.280Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link icon-finance-calculator",
+      "gtm.elementId": "fo-cta-0-primary",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementText": "ONLINE-KALKULATOR",
+      "gtm.elementUrl": "https://www.landrover.de/finance/online-kalkulator/index.html#/quote/l460_k25__4bwkw__a-std-se_a-swb_a-td6-300_d",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 30463,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:53:28.297Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link ",
+      "gtm.elementId": "fo-cta-0-secondary",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.landrover.de/finance/index.html",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 30921
+    },
+    "timestamp": "2025-02-11T15:53:31.742Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link ",
+      "gtm.elementId": "fo-cta-0-secondary",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "FINANZIERUNGSOPTIONEN ENTDECKEN",
+      "gtm.elementUrl": "https://www.landrover.de/finance/index.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 31366,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:31.856Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 31824
+    },
+    "timestamp": "2025-02-11T15:53:35.270Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link ",
+      "gtm.elementId": "fo-cta-0-secondary",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "FINANZIERUNGSOPTIONEN ENTDECKEN",
+      "gtm.elementUrl": "https://www.landrover.de/finance/index.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 32269,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:53:35.335Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link icon-dx-search-inventory",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementUrl": "https://www.landrover.de/mynext-rangerover",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 32727
+    },
+    "timestamp": "2025-02-11T15:54:11.670Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link icon-dx-search-inventory",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementText": "KATALOG DURCHSUCHEN",
+      "gtm.elementUrl": "https://www.landrover.de/mynext-rangerover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 33172,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:54:11.747Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 33895
+    },
+    "timestamp": "2025-02-11T15:54:15.332Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link icon-dx-search-inventory",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementText": "KATALOG DURCHSUCHEN",
+      "gtm.elementUrl": "https://www.landrover.de/mynext-rangerover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 34340,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:54:15.417Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 35063
+    },
+    "timestamp": "2025-02-11T15:54:19.006Z"
+  },
+  {
+    "data": {
+      "event": "gtm.pageError",
+      "gtm.errorLineNumber": 1,
+      "gtm.errorMessage": "Uncaught Error: Syntax error, unrecognized expression: #/?model%5B0%5D=range%20rover",
+      "gtm.errorUrl": "https://www.rangerover.com/etc.clientlibs/jlr/clientlibs/clientlib-dynamic-modules/resources/vendors-node_modules_jquery_dist_jquery_js.1c6a69b5222e2c10d485.js",
+      "gtm.uniqueEventId": 35508
+    },
+    "timestamp": "2025-02-11T15:54:19.081Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "primary-link icon-approved-used",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_blank",
+      "gtm.elementText": "KATALOG DURCHSUCHEN",
+      "gtm.elementUrl": "https://www.approved.landrover.de/search/#/?model%5B0%5D=range%20rover",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 35688,
+      "gtm.willOpenInNewWindow": true
+    },
+    "timestamp": "2025-02-11T15:54:19.103Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#design",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 36411
+    },
+    "timestamp": "2025-02-11T15:54:22.837Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "DESIGN ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#design",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 36856,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:22.915Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 37844
+    },
+    "timestamp": "2025-02-11T15:54:26.508Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "DESIGN ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#design",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 38289,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:26.589Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#refinement",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 39277
+    },
+    "timestamp": "2025-02-11T15:54:30.202Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "KULTIVIERTHEIT ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#refinement",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 39722,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:30.262Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 40710
+    },
+    "timestamp": "2025-02-11T15:54:34.009Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "KULTIVIERTHEIT ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#refinement",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 41155,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:34.079Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#technology",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 42143
+    },
+    "timestamp": "2025-02-11T15:54:37.603Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "TECHNOLOGIE ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#technology",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 42588,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:37.677Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 43576
+    },
+    "timestamp": "2025-02-11T15:54:41.260Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "TECHNOLOGIE ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#technology",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 44021,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:41.318Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#performance",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 45009
+    },
+    "timestamp": "2025-02-11T15:54:44.818Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "LEISTUNG ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#performance",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 45454,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:44.886Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 46442
+    },
+    "timestamp": "2025-02-11T15:54:48.437Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=)",
+      "gtm.elementClasses": "secondary-link None",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "LEISTUNG ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/range-rover/explore.html#performance",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 46887,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:48.506Z"
+  },
+  {
+    "data": {
+      "event": "gtm.click",
+      "gtm.element": "WebElement(tag=span, text=ENTDECKEN)",
+      "gtm.elementClasses": "cta-content",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "",
+      "gtm.elementUrl": "",
+      "gtm.triggers": "598,599,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,2304,2305,2306,2307,2308,3239",
+      "gtm.uniqueEventId": 47875
+    },
+    "timestamp": "2025-02-11T15:54:52.007Z"
+  },
+  {
+    "data": {
+      "event": "gtm.linkClick",
+      "eventCallback": {},
+      "eventTimeout": 2000,
+      "gtm.element": "WebElement(tag=a, text=ENTDECKEN)",
+      "gtm.elementClasses": "primary-link icon-arrow-right",
+      "gtm.elementId": "",
+      "gtm.elementTarget": "_self",
+      "gtm.elementText": "ENTDECKEN",
+      "gtm.elementUrl": "https://www.rangerover.com/de-de/explore/range-rover-chapters/index.html",
+      "gtm.triggers": "8326285_29,8326285_77,8326285_108,8326285_111,8326285_113,8326285_115,8326285_120,8326285_121,8326285_123,8326285_148,8326285_176,8326285_178,8326285_185,8326285_790,8326285_791,8326285_794,8326285_860,8326285_930,8326285_931,8326285_932,8326285_933,8326285_934,8326285_935,8326285_936,8326285_937,8326285_938,8326285_939,8326285_952,8326285_962,8326285_967,8326285_973,8326285_1171,8326285_1190,8326285_1218,8326285_1847,8326285_1961,8326285_2011,8326285_2019,8326285_2097,599855_183,599855_233",
+      "gtm.uniqueEventId": 48320,
+      "gtm.willOpenInNewWindow": false
+    },
+    "timestamp": "2025-02-11T15:54:52.066Z"
+  }
+]
