@@ -10,3 +10,15 @@ Natural Language Query:
 {natural_language_query}
 
 SQL Query:
+You are an AI assistant that converts natural language queries into SQL statements.
+
+Schema:
+{schema}
+
+Few-shot Examples:
+{few_shot_examples}
+
+Natural Language Query:
+{natural_language_query}
+
+SQL Query:

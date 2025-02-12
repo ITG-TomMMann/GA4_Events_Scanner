@@ -1,0 +1,22 @@
+[
+    {
+        "nl_query": "Retrieve all user names from the users table.",
+        "sql": "SELECT name FROM users;"
+    },
+    {
+        "nl_query": "Get the list of all orders placed in the last month.",
+        "sql": "SELECT * FROM orders WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);"
+    },
+    {
+        "nl_query": "Find the email addresses of users who have placed more than five orders.",
+        "sql": "SELECT u.email FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.email HAVING COUNT(o.order_id) > 5;"
+    },
+    {
+        "nl_query": "List all products and their total quantities sold.",
+        "sql": "SELECT product, SUM(quantity) AS total_sold FROM orders GROUP BY product;"
+    },
+    {
+        "nl_query": "Show the details of the most recent order.",
+        "sql": "SELECT * FROM orders ORDER BY order_date DESC LIMIT 1;"
+    }
+]

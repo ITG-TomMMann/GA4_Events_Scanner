@@ -1,7 +1,10 @@
+openai
+faiss-cpu
+PyYAML
+pytest
+sentence-transformers
 pandas
 langsmith
 selenium
-webdriver-manager
-pytest
 webdriver-manager
 streamlit

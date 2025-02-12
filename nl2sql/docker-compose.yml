@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nl2sql:
+    build: .
+    container_name: nl2sql_app
+    volumes:
+      - .:/app/nl2sql
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "8000:8000"
+    command: python source/main.py --query "Sample query"
