@@ -3,7 +3,6 @@ import time
 from typing import List, Dict
 from urllib.parse import urlparse, parse_qs
 import pandas as pd
-import pytest
 from selenium import webdriver
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver.chrome.options import Options
@@ -11,7 +10,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+import streamlit as st
 
+# ------------------------------------------------------------------
+# Helper Functions and GA4EventCollector class (modified)
+# ------------------------------------------------------------------
 
 def make_serializable(obj):
     """Recursively convert objects to serializable types."""
@@ -27,34 +30,40 @@ def make_serializable(obj):
     else:
         return obj
 
-
 def parse_ga4_event(event: Dict) -> Dict:
     """
-    Parse a GA4 event message (from Chrome performance logs).
-    First, check if the request has a URL with query parameters.
-    If not, check if there's POST data and parse that.
-    Extract parameters like 'ep.event_label' and 'ep.gtm_event'.
+    Parse a GA4 event message (from Chrome performance logs) to extract only:
+      - event_label
+      - event_action
+      - event_category
+      - button_text (the original GTM Button text that was pressed)
     """
     try:
         params = {}
-        # First, try to parse query string from the URL
         request = event["params"]["request"]
         url = request.get("url", "")
         if url:
             parsed_url = urlparse(url)
             qs = parse_qs(parsed_url.query)
             params = qs
-        
+
         # If no relevant parameter is found and there's POST data, parse it.
         if not params.get("ep.event_label") and "postData" in request:
             post_data = request["postData"]
-            # postData might be URL-encoded string of parameters.
             qs_post = parse_qs(post_data)
             params = qs_post
-        
+
         event_label = params.get("ep.event_label", [""])[0]
-        gtm_event = params.get("ep.gtm_event", [""])[0]
-        return {"event_label": event_label, "gtm_event": gtm_event, "url": url}
+        event_action = params.get("ep.event_action", [""])[0]
+        event_category = params.get("ep.event_category", [""])[0]
+        # Retrieve the button text that was attached during click
+        button_text = event.get("button_text", "")
+        return {
+            "event_label": event_label,
+            "event_action": event_action,
+            "event_category": event_category,
+            "button_text": button_text
+        }
     except Exception as ex:
         return {"error": str(ex)}
 
@@ -200,6 +209,7 @@ class GA4EventCollector:
 
         for target_element in filtered_elements:
             info = self.get_element_info(target_element)
+            button_text = info.get("text", "")
             print(f"\nClicking target element: {info}")
             try:
                 self.driver.execute_script("arguments[0].scrollIntoView(true);", target_element)
@@ -216,6 +226,9 @@ class GA4EventCollector:
                     print("No new dataLayer event detected after click.")
                 new_ga4 = self.get_ga4_events()[initial_ga4_count:]
                 if new_ga4:
+                    # Attach the original GTM Button text to each GA4 event
+                    for event in new_ga4:
+                        event["button_text"] = button_text
                     print("Captured new GA4 network event(s):", new_ga4)
                     captured_ga4_events.extend(new_ga4)
                 else:
@@ -246,24 +259,16 @@ class GA4EventCollector:
 
     def export_events(self, filename: str):
         """
-        Export dataLayer events and parsed GA4 events to separate files.
-        For GA4 events, we parse the URL to extract, for example, event_label.
+        Export parsed GA4 events to separate files, including only:
+          - event_label
+          - event_action
+          - event_category
+          - button_text (original GTM Button text)
         """
-        # Export dataLayer events.
-        dl_serializable = make_serializable(self.events)
-        with open(f"{filename}_dataLayer.json", 'w', encoding='utf-8') as f:
-            json.dump(dl_serializable, f, indent=2, ensure_ascii=False)
-        df_dl = pd.DataFrame(dl_serializable)
-        df_dl.to_csv(f"{filename}_dataLayer.csv", index=False)
-
-        # Parse GA4 events.
         parsed_ga4 = []
         for event in self.ga4_events:
             parsed = parse_ga4_event(event)
-            parsed_ga4_entry = parsed.copy()
-            # Optionally, include the timestamp from the raw event.
-            parsed_ga4_entry["timestamp"] = event.get("timestamp")
-            parsed_ga4.append(parsed_ga4_entry)
+            parsed_ga4.append(parsed)
 
         with open(f"{filename}_GA4.json", 'w', encoding='utf-8') as f:
             json.dump(parsed_ga4, f, indent=2, ensure_ascii=False)
@@ -274,63 +279,42 @@ class GA4EventCollector:
         """Close the browser."""
         self.driver.quit()
 
+# -----------------------------------------------
+# Streamlit Interface for the GA4 Event Collector
+# -----------------------------------------------
 
-# -----------------------
-# Pytest Tests
-# -----------------------
+def main():
+    st.title("GA4 Event Collector")
+    st.write("Enter the URL from which to collect GA4 events.")
 
-@pytest.fixture(scope="module")
-def collector():
-    col = GA4EventCollector()
-    yield col
-    col.close()
+    # URL input (a default URL is provided)
+    url = st.text_input("URL", "https://www.rangerover.com/de-de/range-rover/index.html")
 
+    # When the user clicks the button, run the collector
+    if st.button("Collect GA4 Events"):
+        if not url.strip():
+            st.error("Please enter a valid URL.")
+        else:
+            with st.spinner("Collecting events, please wait..."):
+                collector = GA4EventCollector()
+                try:
+                    # Collect events from the URL (using default selectors and no target text filtering)
+                    events = collector.collect_events_from_url(url, wait_time=5, section_selector="body", target_text=None)
+                    # Export GA4 events to the local folder
+                    collector.export_events("gtm_and_ga4_events")
+                    st.success("GA4 events collected and exported successfully!")
 
-def test_find_clickable_elements(collector):
-    collector.driver.get("https://www.rangerover.com/de-de/range-rover/index.html")
-    elements = collector.find_clickable_elements("body")
-    assert len(elements) > 0, "No clickable elements found."
-    for el in elements:
-        tag = el.tag_name.lower()
-        assert tag in ["button", "a", "span"], f"Unexpected tag: {tag}"
-
-
-def test_filter_elements(collector):
-    collector.driver.get("https://www.rangerover.com/de-de/range-rover/index.html")
-    elements = collector.find_clickable_elements("body")
-    filtered = []
-    snippets = ["primary-link icon-dx-search-inventory", "cta-content", "secondary-link", "cta"]
-    for el in elements:
-        class_attr = el.get_attribute("class") or ""
-        for snippet in snippets:
-            if snippet in class_attr:
-                filtered.append(el)
-                break
-    assert len(filtered) > 0, "No elements match the class criteria."
-
-
-def test_click_generates_ga4_event(collector):
-    collector.driver.get("https://www.rangerover.com/de-de/range-rover/index.html")
-    initial_ga4 = len(collector.get_ga4_events())
-    _, captured_ga4 = collector.trigger_target_elements("body", target_text=None)
-    time.sleep(3)
-    new_ga4 = collector.get_ga4_events()
-    assert len(new_ga4) > initial_ga4, "Click did not generate a new GA4 network event."
-    assert len(captured_ga4) > 0, "No GA4 events were captured during clicks."
-
-
-# -----------------------
-# Main Execution
-# -----------------------
+                    # Display the parsed GA4 events on the page
+                    parsed_ga4_events = [parse_ga4_event(event) for event in collector.ga4_events]
+                    st.subheader("Parsed GA4 Events")
+                    if parsed_ga4_events:
+                        st.json(parsed_ga4_events)
+                    else:
+                        st.write("No GA4 events were captured.")
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
+                finally:
+                    collector.close()
 
 if __name__ == "__main__":
-    collector = GA4EventCollector()
-    try:
-        url = "https://www.rangerover.com/de-de/range-rover/index.html"
-        # Use target_text=None for class-based filtering.
-        events = collector.collect_events_from_url(url, section_selector="body", target_text=None)
-        print(f"\nCollected dataLayer events: {len(events['dataLayer'])}")
-        print(f"Collected GA4 events: {len(events['ga4'])}")
-        collector.export_events("gtm_and_ga4_events")
-    finally:
-        collector.close()
+    main()
