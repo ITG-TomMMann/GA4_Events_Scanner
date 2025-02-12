@@ -1,0 +1,13 @@
+api_keys:
+  openai: "YOUR_OPENAI_API_KEY"
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "your_username"
+  password: "your_password"
+  db_name: "your_database"
+
+rag:
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  vector_store_path: "rag/vector_store.faiss"
