@@ -1,4 +1,4 @@
-openai
+openai==0.28.5
 faiss-cpu
 PyYAML
 pytest
