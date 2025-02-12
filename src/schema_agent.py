@@ -1,5 +1,5 @@
 from typing import Optional, Dict
-from utils.schema_inference import infer_schema
+from utils.schema_inference import infer_schema, parse_user_provided_schema, fetch_schema_sql
 import logging
 
 def get_schema(user_input: Optional[str] = None) -> Dict:
