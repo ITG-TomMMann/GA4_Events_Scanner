@@ -8,3 +8,4 @@ langsmith
 selenium
 webdriver-manager
 streamlit
+sqlparse
