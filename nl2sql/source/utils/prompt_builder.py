@@ -2,7 +2,7 @@ import json
 from typing import List, Dict
 
 def build_prompt(nl_query: str, schema: dict, examples: List[Dict]) -> str:
-    with open('examples/query_prompt_template.txt', 'r') as template_file:
+    with open('nl2sql/examples/query_prompt_template.txt', 'r') as template_file:
         template = template_file.read()
     
     formatted_schema = json.dumps(schema, indent=2)

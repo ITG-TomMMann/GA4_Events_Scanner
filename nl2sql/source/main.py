@@ -12,7 +12,7 @@ def parse_arguments():
     parser.add_argument('--schema', type=str, help="Optional schema input")
     return parser.parse_args()
 
-def load_config(config_path='config/config.yaml'):
+def load_config(config_path='nl2sql/config/config.yaml'):
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
 

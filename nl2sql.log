@@ -1,0 +1,106 @@
+2025-02-12 17:28:47,706 - root - INFO - Schema inference successful.
+2025-02-12 17:28:47,707 - root - INFO - Inferred schema from SQL.
+2025-02-12 17:28:47,707 - root - ERROR - Error computing embedding: 
+
+You tried to access openai.Embedding, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-02-12 17:32:36,984 - root - INFO - Schema inference successful.
+2025-02-12 17:32:36,986 - root - INFO - Inferred schema from SQL.
+2025-02-12 17:46:26,435 - root - INFO - Schema inference successful.
+2025-02-12 17:46:26,436 - root - INFO - Inferred schema from SQL.
+2025-02-12 17:46:26,436 - root - ERROR - Error computing embedding: 
+
+You tried to access openai.Embedding, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-02-12 18:01:52,290 - root - INFO - Schema inference successful.
+2025-02-12 18:01:52,290 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:01:52,290 - root - ERROR - Error computing embedding: 
+
+You tried to access openai.Embedding, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-02-12 18:07:52,274 - root - INFO - Schema inference successful.
+2025-02-12 18:07:52,274 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:07:53,871 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:07:53,875 - root - ERROR - Error computing embedding: 'CreateEmbeddingResponse' object is not subscriptable
+2025-02-12 18:17:13,073 - root - INFO - Schema inference successful.
+2025-02-12 18:17:13,074 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:17:14,772 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:22:09,189 - root - INFO - Schema inference successful.
+2025-02-12 18:22:09,189 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:22:10,945 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:25:58,528 - root - INFO - Schema inference successful.
+2025-02-12 18:25:58,528 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:26:00,309 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:26:38,784 - root - INFO - Schema inference successful.
+2025-02-12 18:26:38,784 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:26:40,622 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:26:40,628 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:27:06,773 - root - INFO - Schema inference successful.
+2025-02-12 18:27:06,773 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:27:08,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:27:08,210 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:27:08,222 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:27:23,744 - root - INFO - Schema inference successful.
+2025-02-12 18:27:23,745 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:27:27,910 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:27:27,917 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:27:27,933 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:27:27,935 - root - ERROR - Error generating SQL: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-02-12 18:33:40,687 - root - INFO - Schema inference successful.
+2025-02-12 18:33:40,688 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:33:41,987 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:33:41,989 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:33:42,011 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:33:42,014 - root - ERROR - Error generating SQL: 'Chat' object has no attribute 'completion'
+2025-02-12 18:33:55,078 - root - INFO - Schema inference successful.
+2025-02-12 18:33:55,079 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:33:56,177 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:33:56,181 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:33:56,214 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:33:57,432 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-12 18:33:57,463 - root - ERROR - Error generating SQL: 'ChatCompletionMessage' object is not subscriptable
+2025-02-12 18:34:25,193 - root - INFO - Schema inference successful.
+2025-02-12 18:34:25,194 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:34:27,974 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:34:27,978 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:34:28,012 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:34:29,268 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-12 18:34:29,272 - root - INFO - Generated SQL Query: SELECT user_name, email FROM users;
+2025-02-12 18:34:50,446 - root - INFO - Schema inference successful.
+2025-02-12 18:34:50,447 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:34:50,791 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:34:50,795 - root - INFO - Initialized new FAISS index.
+2025-02-12 18:34:50,799 - root - INFO - Retrieved 5 examples.
+2025-02-12 18:34:52,772 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-12 18:34:52,774 - root - INFO - Generated SQL Query: SELECT product_name, SUM(quantity) FROM products GROUP BY product_name;
+2025-02-12 18:41:48,902 - root - INFO - Schema inference successful.
+2025-02-12 18:41:48,903 - root - INFO - Inferred schema from SQL.
+2025-02-12 18:41:49,882 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-12 18:41:49,887 - root - INFO - Initialized new FAISS index.

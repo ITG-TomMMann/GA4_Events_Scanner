@@ -1,13 +1,22 @@
 event_label,event_action,event_category,button_text
-EXPLORE OUR VEHICLES :: primary-link hero__primary-cta   icon-arrow-right,https://www.landrover.com/fleet-and-business/vehicle-range/index.html,nav: cta linkClicks by class,EXPLORE OUR VEHICLES
-EXPLORE OUR VEHICLES :: primary-link hero__primary-cta   icon-arrow-right,https://www.landrover.com/fleet-and-business/vehicle-range/index.html,nav: cta linkClicks by class,EXPLORE OUR VEHICLES
-EXPLORE VEHICLES :: cta-content,https://www.landrover.com/fleet-and-business/vehicle-range/index.html,nav: cta linkClicks by class,
-EXPLORE ELECTRIC FOR BUSINESS :: cta-content,https://www.landrover.com/fleet-and-business/phev.html,nav: cta linkClicks by class,
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/emergency-services.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/military-personnel-sales.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/vehicles-for-diplomats.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/land-rover-embassy-sales.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/defender-akip-protection.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: cta-content,https://www.landrover.com/fleet-and-business/our-responsible-future.html,nav: cta linkClicks by class,
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/fleet-after-sales.html,nav: cta linkClicks by class,FIND OUT MORE
-FIND OUT MORE :: secondary-link None,https://www.landrover.com/fleet-and-business/fleet-after-sales.html,nav: cta linkClicks by class,FIND OUT MORE
+IN DIE WARTELISTE EINTRAGEN :: primary-link hero__primary-cta   ,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover,nav: cta linkClicks by class,IN DIE WARTELISTE EINTRAGEN
+BLEIBEN SIE INFORMIERT ::  secondary-link  ,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmi-de-de,nav: cta linkClicks by class,
+MEHR ERFAHREN :: primary-link hero__primary-cta   icon-arrow-right,https://www.rangerover.com/de-de/range-rover/range-rover-riviera-edition.html,nav: cta linkClicks by class,MEHR ERFAHREN
+,,,IN DIE WARTELISTE EINTRAGEN
+IN DIE WARTELISTE EINTRAGEN :: cmp-accolades__copy--link secondary-link ,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover,nav: cta linkClicks by class,IN DIE WARTELISTE EINTRAGEN
+IN DIE WARTELISTE EINTRAGEN :: cta-content,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover,nav: cta linkClicks by class,IN DIE WARTELISTE EINTRAGEN
+,,,
+IN DIE WARTELISTE EINTRAGEN :: cmp-accolades__copy--link secondary-link ,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover,nav: cta linkClicks by class,IN DIE WARTELISTE EINTRAGEN
+,,,
+IN DIE WARTELISTE EINTRAGEN :: cta-content,https://forms.rangerover.com/rr-de-de/servlet/SmartForm.html?formCode=lr-l460kmiw-de-de&variant=RangeRover,nav: cta linkClicks by class,VOLLELEKTRISCHEN FAHRSPASS ERLEBEN
+,,,VOLLELEKTRISCHEN FAHRSPASS ERLEBEN
+VOLLELEKTRISCHEN FAHRSPASS ERLEBEN :: cta-content,https://www.rangerover.com/de-de/electric/index.html,nav: cta linkClicks by class,
+KONFIGURATOR :: cta-content,https://www.rangerover.com/lr/de_de/l460_k25/_/a-v8-615-sv_a-sv_a-swb_p/ipr/personalise/model/,nav: cta linkClicks by class,MODELLE ERKUNDEN
+MODELLE ERKUNDEN :: cta-content,https://www.rangerover.com/de-de/range-rover/models-and-specifications.html,nav: cta linkClicks by class,
+FINANZIERUNGSOPTIONEN ENTDECKEN :: secondary-link ,https://www.landrover.de/finance/index.html,nav: cta linkClicks by class,FINANZIERUNGSOPTIONEN ENTDECKEN
+KATALOG DURCHSUCHEN :: primary-link icon-dx-search-inventory,https://www.landrover.de/mynext-rangerover,nav: cta linkClicks by class,KATALOG DURCHSUCHEN
+KATALOG DURCHSUCHEN :: cta-content,https://www.approved.landrover.de/search/#/?model%5B0%5D=range%20rover,nav: cta linkClicks by class,DESIGN ENTDECKEN
+DESIGN ENTDECKEN :: cta-content,https://www.rangerover.com/de-de/range-rover/explore.html#design,nav: cta linkClicks by class,KULTIVIERTHEIT ENTDECKEN
+KULTIVIERTHEIT ENTDECKEN :: cta-content,https://www.rangerover.com/de-de/range-rover/explore.html#refinement,nav: cta linkClicks by class,TECHNOLOGIE ENTDECKEN
+TECHNOLOGIE ENTDECKEN :: cta-content,https://www.rangerover.com/de-de/range-rover/explore.html#technology,nav: cta linkClicks by class,LEISTUNG ENTDECKEN
+LEISTUNG ENTDECKEN :: cta-content,https://www.rangerover.com/de-de/range-rover/explore.html#performance,nav: cta linkClicks by class,ENTDECKEN
