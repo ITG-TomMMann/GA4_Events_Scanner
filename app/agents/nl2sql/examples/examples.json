@@ -16,7 +16,7 @@
         "sql": "SELECT product, SUM(quantity) AS total_sold FROM orders GROUP BY product;"
     },
     {
-        "nl_query": "Show the details of the most recent order.",
-        "sql": "SELECT * FROM orders ORDER BY order_date DESC LIMIT 1;"
+        "nl_query": "I want a breakdown of range rover sport by channel",
+        "sql": "SELECT h.market_code, s.campaign, s.channel_grouping, s.medium, s.referrer, DATE_TRUNC(h.visit_start_date, WEEK) AS week, h.visit_start_date, COUNT(DISTINCT h.visitor_id) AS total_users FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s ON h.session_id = s.session_id WHERE h.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND s.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND h.brand = 'Land Rover' AND page_path LIKE '%range-rover/range-rover-sport/index.html' GROUP BY 1,2,3,4,5,6,7"
     }
 ]

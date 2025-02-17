@@ -5,6 +5,8 @@ from schema_agent import get_schema
 from rag.retrieval import retrieve_examples
 from query_agent import generate_sql
 from utils.logger import setup_logger
+import os 
+
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Text-to-SQL CLI")
@@ -12,9 +14,19 @@ def parse_arguments():
     parser.add_argument('--schema', type=str, help="Optional schema input")
     return parser.parse_args()
 
-def load_config(config_path='nl2sql/config/config.yaml'):
+
+def load_config():
+    # This points to the "source" folder where main.py is
+    source_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Go up one folder to "nl2sql", then into "config"
+    config_path = os.path.join(source_dir, "..", "config", "config.yaml")
+    # Normalize any ".." in the path
+    config_path = os.path.normpath(config_path)
+
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
+
 
 def main():
     setup_logger()

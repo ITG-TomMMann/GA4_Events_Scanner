@@ -104,3 +104,121 @@ A detailed migration guide is available here: https://github.com/openai/openai-p
 2025-02-12 18:41:48,903 - root - INFO - Inferred schema from SQL.
 2025-02-12 18:41:49,882 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 2025-02-12 18:41:49,887 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:34:48,775 - root - INFO - Schema inference successful.
+2025-02-17 10:34:48,776 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:34:50,392 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:34:50,397 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:35:20,257 - root - INFO - Schema inference successful.
+2025-02-17 10:35:20,258 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:35:21,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:35:21,598 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:39:40,781 - root - INFO - Schema inference successful.
+2025-02-17 10:39:40,781 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:39:41,899 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:39:41,905 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:44:14,488 - root - INFO - Schema inference successful.
+2025-02-17 10:44:14,489 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:44:15,628 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:44:15,632 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:46:13,232 - root - INFO - Schema inference successful.
+2025-02-17 10:46:13,233 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:46:14,352 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:46:14,360 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:55:39,937 - root - INFO - Schema inference successful.
+2025-02-17 10:55:39,937 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:55:41,124 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:55:41,126 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:57:21,184 - root - INFO - Schema inference successful.
+2025-02-17 10:57:21,184 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:57:22,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:57:22,600 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:57:47,569 - root - INFO - Schema inference successful.
+2025-02-17 10:57:47,569 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:57:48,797 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:57:48,803 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:57:48,828 - root - INFO - Retrieved 5 examples.
+2025-02-17 10:59:24,445 - root - INFO - Schema inference successful.
+2025-02-17 10:59:24,447 - root - INFO - Inferred schema from SQL.
+2025-02-17 10:59:26,138 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 10:59:26,141 - root - INFO - Initialized new FAISS index.
+2025-02-17 10:59:26,161 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:00:15,109 - root - INFO - Schema inference successful.
+2025-02-17 11:00:15,109 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:00:17,018 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:00:17,022 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:00:17,061 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:01:43,886 - root - INFO - Schema inference successful.
+2025-02-17 11:01:43,886 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:01:44,766 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:01:44,768 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:01:44,788 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:02:35,113 - root - INFO - Schema inference successful.
+2025-02-17 11:02:35,114 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:02:36,141 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:02:36,141 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:02:36,155 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:02:38,388 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:02:38,408 - root - INFO - Generated SQL Query: Apologies, your query "test" is not clear. Could you provide more specific details related to a database, table, or specific data you're seeking?
+2025-02-17 11:02:49,204 - root - INFO - Schema inference successful.
+2025-02-17 11:02:49,204 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:02:49,817 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:02:49,817 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:02:49,826 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:03:00,623 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:03:00,629 - root - INFO - Generated SQL Query: SELECT h.market_code, s.campaign, s.channel_grouping, s.medium, s.referrer, DATE_TRUNC(h.visit_start_date, WEEK) AS week, h.visit_start_date, COUNT(DISTINCT h.visitor_id) AS total_users FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s ON h.session_id = s.session_id WHERE h.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND s.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND h.brand
+2025-02-17 11:03:16,741 - root - INFO - Schema inference successful.
+2025-02-17 11:03:16,741 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:03:17,155 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:03:17,159 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:03:17,163 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:03:25,445 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:03:25,452 - root - INFO - Generated SQL Query: SELECT h.market_code, s.campaign, s.channel_grouping, s.medium, s.referrer, DATE_TRUNC(h.visit_start_date, WEEK) AS week, h.visit_start_date, COUNT(DISTINCT h.visitor_id) AS total_users FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s ON h.session_id = s.session_id WHERE h.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND s.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND h.brand
+2025-02-17 11:04:54,827 - root - INFO - Schema inference successful.
+2025-02-17 11:04:54,828 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:04:55,995 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:04:56,005 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:04:56,024 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:04:58,019 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:04:58,025 - root - INFO - Generated SQL Query: SELECT * FROM orders WHERE order_date >= DATE_ADD(CURRENT_DATE, INTERVAL -1 MONTH)
+2025-02-17 11:05:29,570 - root - INFO - Schema inference successful.
+2025-02-17 11:05:29,570 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:05:29,880 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:05:29,886 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:05:29,891 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:05:31,570 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:05:31,572 - root - INFO - Generated SQL Query: SELECT * FROM orders WHERE order_date >= DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH)
+2025-02-17 11:05:59,551 - root - INFO - Schema inference successful.
+2025-02-17 11:05:59,563 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:06:00,015 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:06:00,015 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:06:00,015 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:06:01,376 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:06:01,376 - root - INFO - Generated SQL Query: SELECT * FROM Orders WHERE OrderDate >= DATEADD(month, -2, GETDATE())
+2025-02-17 11:06:18,915 - root - INFO - Schema inference successful.
+2025-02-17 11:06:18,915 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:06:19,502 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:06:19,504 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:06:19,510 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:06:21,112 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:06:21,116 - root - INFO - Generated SQL Query: SELECT * FROM Orders WHERE OrderDate >= DATEADD(month, -5, GETDATE())
+2025-02-17 11:06:43,210 - root - INFO - Schema inference successful.
+2025-02-17 11:06:43,211 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:06:43,946 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:06:43,954 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:06:43,960 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:06:45,660 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:06:45,665 - root - INFO - Generated SQL Query: SELECT * FROM orders WHERE order_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH)
+2025-02-17 11:07:11,281 - root - INFO - Schema inference successful.
+2025-02-17 11:07:11,286 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:07:11,814 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:07:11,820 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:07:11,824 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:07:13,489 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:07:13,489 - root - INFO - Generated SQL Query: SELECT * FROM orders WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+2025-02-17 11:07:28,977 - root - INFO - Schema inference successful.
+2025-02-17 11:07:28,978 - root - INFO - Inferred schema from SQL.
+2025-02-17 11:07:29,864 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-17 11:07:29,873 - root - INFO - Initialized new FAISS index.
+2025-02-17 11:07:29,891 - root - INFO - Retrieved 5 examples.
+2025-02-17 11:07:31,359 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-17 11:07:31,370 - root - INFO - Generated SQL Query: SELECT * FROM Orders WHERE OrderDate >= DATEADD(month, -1, GETDATE())
