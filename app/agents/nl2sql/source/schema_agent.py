@@ -1,6 +1,6 @@
-from utils.table_selector import TableSelector
+from .utils.table_selector import TableSelector
 from typing import Optional, Dict
-from utils.schema_inference import infer_schema, parse_user_provided_schema, fetch_schema_sql
+from .utils.schema_inference import infer_schema, parse_user_provided_schema, fetch_schema_sql
 import logging
 
 # Initialize TableSelector (ensure schema.sql path is correct)
