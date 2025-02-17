@@ -1,4 +1,5 @@
 import logging
+import os
 import json
 
 def capture_feedback(sql_query: str, corrections: str) -> None:

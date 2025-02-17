@@ -5,6 +5,8 @@ pytest
 sentence-transformers
 pandas
 langsmith
+langchain>=0.0.232
+langchain-community
 selenium
 webdriver-manager
 streamlit

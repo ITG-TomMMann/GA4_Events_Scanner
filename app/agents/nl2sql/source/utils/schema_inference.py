@@ -1,3 +1,4 @@
+import os
 import sqlparse
 from typing import Dict
 import logging
@@ -8,7 +9,8 @@ def parse_user_provided_schema(user_input: str) -> Dict:
 
 def fetch_schema_sql() -> str:
     # Implement logic to fetch schema from a database or file
-    return "CREATE TABLE user_table (id INT, name VARCHAR(100), email VARCHAR(100));"
+    with open("config/schema.sql", "r") as file:
+        return file.read()
 
 def infer_schema(schema_sql: str) -> Dict:
     parsed = sqlparse.parse(schema_sql)

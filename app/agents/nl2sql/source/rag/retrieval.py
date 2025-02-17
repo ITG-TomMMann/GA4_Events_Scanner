@@ -1,6 +1,7 @@
 from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
+from langchain.docstore.document import Document
 from .utils.embedding_utils import compute_embedding
 import json
 import logging
@@ -12,7 +13,8 @@ def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
         with open('examples/examples.json', 'r') as f:
             examples = json.load(f)
         
-        # Initialize embeddings
+        # Transform examples into Document instances with 'page_content'
+        documents = [Document(page_content=f"{ex['nl_query']} => {ex['sql']}") for ex in examples]
         embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
         
         # Create or load FAISS index
@@ -20,7 +22,7 @@ def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
             vector_store = FAISS.load_local("rag/vector_store.faiss", embeddings)
             logging.info("FAISS index loaded.")
         else:
-            vector_store = FAISS.from_documents(examples, embeddings)
+            vector_store = FAISS.from_documents(documents, embeddings)
             vector_store.save_local("rag/vector_store.faiss")
             logging.info("FAISS index created and saved.")
         
