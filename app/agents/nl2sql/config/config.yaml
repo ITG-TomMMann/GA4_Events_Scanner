@@ -1,6 +1,6 @@
 api_keys:
-  openai: "YOUR_OPENAI_API_KEY"
-
+  openai: "${OPENAI_API_KEY}"
+  
 database:
   host: "localhost"
   port: 5432

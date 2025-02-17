@@ -9,3 +9,5 @@ def setup_logger():
             logging.StreamHandler()
         ]
     )
+    # Set higher verbosity for debugging if needed
+    # logging.getLogger().setLevel(logging.DEBUG)
