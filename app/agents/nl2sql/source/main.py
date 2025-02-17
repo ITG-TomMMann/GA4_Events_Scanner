@@ -8,6 +8,7 @@ from .schema_agent import get_schema
 from .rag.retrieval import retrieve_examples
 from .query_agent import generate_sql
 from .utils.prompt_builder import build_prompt
+from .utils.memory_manager import MemoryManager
 import yaml
 import os
 import logging
@@ -50,6 +51,8 @@ def load_config():
 #
 # if __name__ == "__main__":
 #     main()
+
+
 class QueryRequest(BaseModel):
     query: str
     session_id: str
@@ -57,6 +60,11 @@ class QueryRequest(BaseModel):
 class FollowUpRequest(BaseModel):
     follow_up_query: str
     session_id: str
+
+# Initialize MemoryManager
+memory_manager = MemoryManager()
+
+
 @app.post("/query")
 def handle_query(request: QueryRequest):
     setup_logger()
@@ -89,6 +97,8 @@ def handle_query(request: QueryRequest):
     except Exception as e:
         logging.error(f"Error handling query: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/followup")
 def handle_followup(request: FollowUpRequest):
     setup_logger()
@@ -116,9 +126,8 @@ def handle_followup(request: FollowUpRequest):
     except Exception as e:
         logging.error(f"Error handling follow-up query: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-from .utils.memory_manager import MemoryManager
 
-memory_manager = MemoryManager()
+
 @app.post("/clear_memory")
 def clear_session_memory(session_id: str):
     try:

@@ -4,7 +4,7 @@ import logging
    
 def compute_embedding(text: str) -> np.array:
         try:
-            response = openai.embeddings.create(
+            response = openai.Embedding.create(
                 input=text,
                 model="text-embedding-ada-002"
             )

@@ -20,16 +20,27 @@ def infer_schema(schema_sql: str) -> Dict:
                 table_name = None
                 columns = []
                 for token in tokens:
-                    if token.ttype is None and token.value.upper().startswith("TABLE"):
-                        table_name = token.value.split()[1]
+                    if isinstance(token, sqlparse.sql.Identifier) and token.value.upper().startswith("TABLE"):
+                        table_name = token.get_real_name()
+                        logging.debug(f"Found table: {table_name}")
                     elif isinstance(token, sqlparse.sql.Parenthesis):
                         for col_def in token.tokens:
                             if isinstance(col_def, sqlparse.sql.IdentifierList):
                                 for identifier in col_def.get_identifiers():
-                                    col_name = identifier.get_name()
-                                    columns.append(col_name)
+                                    if isinstance(identifier, sqlparse.sql.Identifier):
+                                        col_name = identifier.get_name()
+                                        if col_name:
+                                            columns.append(col_name)
+                                            logging.debug(f"Found column: {col_name}")
+                                    else:
+                                        logging.debug(f"Skipping non-Identifier token: {identifier}")
                 if table_name:
                     schema[table_name] = {"columns": columns}
+                if table_name:
+                    schema[table_name] = {"columns": columns}
+                    logging.info(f"Schema for table '{table_name}': {columns}")
+                else:
+                    logging.warning("Table name not found in CREATE statement.")
         logging.info("Schema inference successful.")
     except Exception as e:
         logging.error("Error inferring schema: %s", e)

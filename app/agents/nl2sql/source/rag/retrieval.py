@@ -1,7 +1,7 @@
 from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-from utils.embedding_utils import compute_embedding
+from .utils.embedding_utils import compute_embedding
 import json
 import logging
 import os

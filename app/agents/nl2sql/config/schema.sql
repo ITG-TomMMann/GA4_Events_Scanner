@@ -42,8 +42,8 @@ CREATE TABLE GA4_hit (
   visit_start_time       INT NOT NULL,
   visit_start_time2      TIME NOT NULL,
   visit_start_date       DATE NOT NULL,
-  -- Duplicate name below; consider renaming to visit_start_datetime:
-  visit_start_date       DATETIME NOT NULL,
+  -- Renamed to avoid duplication
+  visit_start_datetime   DATETIME NOT NULL,
   hit_datetime           DATETIME NOT NULL,
   hit_time               TIME NOT NULL,
   property_id            VARCHAR(255) NOT NULL,
