@@ -62,6 +62,8 @@ def handle_query(request: QueryRequest):
     config = load_config()
     try:
         # Retrieve conversation history
+        memory = memory_manager.get_memory(request.session_id)
+        
         conversation = history.get_messages(request.session_id)
         
         # Get schema
