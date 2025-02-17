@@ -1,11 +1,10 @@
 FROM python:3.9-slim
 
-# Set environment variables
+# Ensure working directory is set correctly
+WORKDIR /app/nl2sql
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set working directory
-WORKDIR /app/nl2sql
 
 # Install dependencies
 COPY requirements.txt .

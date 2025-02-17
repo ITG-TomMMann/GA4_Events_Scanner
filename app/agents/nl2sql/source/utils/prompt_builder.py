@@ -8,7 +8,7 @@ def build_prompt(nl_query: str, schema: dict, examples: List[Dict]) -> str:
     # Go up one level to "nl2sql"
     nl2sql_dir = os.path.abspath(os.path.join(source_dir, ".."))
     nl2sql_dir_2 = os.path.abspath(os.path.join(nl2sql_dir, ".."))
-    # Then into the "examples/quer_prompt" folder
+    # Then into the "examples/query_prompt" folder
     template_path = os.path.join(nl2sql_dir_2, "examples",  "query_prompt_template.txt")
     
     with open(template_path, 'r') as template_file:

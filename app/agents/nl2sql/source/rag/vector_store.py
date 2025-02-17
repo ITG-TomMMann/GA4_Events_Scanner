@@ -13,14 +13,3 @@ class VectorStore:
             logging.info("FAISS index loaded.")
         else:
             logging.info("Initialized new FAISS index.")
-
-    def add_vectors(self, vectors: np.array):
-        self.index.add(vectors)
-        logging.info("Added %d vectors to FAISS index.", len(vectors))
-
-    def save_index(self):
-        faiss.write_index(self.index, self.index_path)
-        logging.info("FAISS index saved to %s.", self.index_path)
-
-    def load_index(self):
-        self.index = faiss.read_index(self.index_path)

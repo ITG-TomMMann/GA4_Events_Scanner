@@ -15,7 +15,7 @@ def generate_sql(nl_query: str, schema: dict, few_shot_examples: List[Dict]) -> 
             messages=[{"role": "user", "content": prompt}],
             max_tokens=150
         )
-        sql_query = response.choices[0].message.content
+        sql_query = response.choices[0].message.content.strip()
         logging.info("Generated SQL Query: %s", sql_query)
         return sql_query
     except Exception as e:

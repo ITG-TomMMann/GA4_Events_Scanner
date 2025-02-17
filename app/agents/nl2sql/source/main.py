@@ -16,12 +16,9 @@ def parse_arguments():
 
 
 def load_config():
-    # This points to the "source" folder where main.py is
+def load_config():
     source_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # Go up one folder to "nl2sql", then into "config"
     config_path = os.path.join(source_dir, "..", "config", "config.yaml")
-    # Normalize any ".." in the path
     config_path = os.path.normpath(config_path)
 
     with open(config_path, 'r') as f:
@@ -41,7 +38,7 @@ def main():
         examples = retrieve_examples(nl_query)
         sql = generate_sql(nl_query, schema, examples)
         print(f"Generated SQL:\n{sql}")
-        # Reset query for next iteration
+        args.query = None
         args.query = None
 
 if __name__ == "__main__":
