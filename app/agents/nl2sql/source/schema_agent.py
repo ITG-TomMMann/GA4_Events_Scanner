@@ -1,10 +1,17 @@
+import os
 from .utils.table_selector import TableSelector
 from typing import Optional, Dict
 from .utils.schema_inference import infer_schema, parse_user_provided_schema, fetch_schema_sql
 import logging
 
-# Initialize TableSelector (ensure schema.sql path is correct)
-table_selector = TableSelector(schema_sql_path="config/schema.sql")
+# Determine the absolute path to the 'config' directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+config_dir = os.path.join(current_dir, "..", "config")
+schema_sql_path = os.path.join(config_dir, "schema.sql")
+schema_sql_path = os.path.normpath(schema_sql_path)
+
+# Initialize TableSelector with the absolute path
+table_selector = TableSelector(schema_sql_path=schema_sql_path)
 
 def get_schema(user_input: Optional[str] = None, query: str = "") -> Dict:
     if user_input:

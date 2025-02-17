@@ -7,9 +7,16 @@ def parse_user_provided_schema(user_input: str) -> Dict:
     # Implement actual parsing logic here
     return {"user_table": {"columns": ["id", "name", "email"]}}
 
+import os
+
 def fetch_schema_sql() -> str:
-    # Implement logic to fetch schema from a database or file
-    with open("config/schema.sql", "r") as file:
+    # Determine the absolute path to the 'config' directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    config_dir = os.path.join(current_dir, "..", "..", "config")
+    schema_sql_path = os.path.join(config_dir, "schema.sql")
+    schema_sql_path = os.path.normpath(schema_sql_path)
+    
+    with open(schema_sql_path, "r") as file:
         return file.read()
 
 def infer_schema(schema_sql: str) -> Dict:
