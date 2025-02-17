@@ -38,8 +38,6 @@ def infer_schema(schema_sql: str) -> Dict:
                                         logging.debug(f"Skipping non-Identifier token: {identifier}")
                 if table_name:
                     schema[table_name] = {"columns": columns}
-                if table_name:
-                    schema[table_name] = {"columns": columns}
                     logging.info(f"Schema for table '{table_name}': {columns}")
                 else:
                     logging.warning("Table name not found in CREATE statement.")
