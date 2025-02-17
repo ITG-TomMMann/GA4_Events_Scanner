@@ -16,7 +16,6 @@ def parse_arguments():
 
 
 def load_config():
-def load_config():
     source_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(source_dir, "..", "config", "config.yaml")
     config_path = os.path.normpath(config_path)
