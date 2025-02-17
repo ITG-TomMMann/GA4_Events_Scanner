@@ -1,13 +1,13 @@
 import argparse
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from langchain.memory import ChatMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.chains import ConversationalRetrievalChain
-from utils.logger import setup_logger
-from schema_agent import get_schema
-from rag.retrieval import retrieve_examples
-from query_agent import generate_sql
-from utils.prompt_builder import build_prompt
+from .utils.logger import setup_logger
+from .schema_agent import get_schema
+from .rag.retrieval import retrieve_examples
+from .query_agent import generate_sql
+from .utils.prompt_builder import build_prompt
 import yaml
 import os
 import logging
@@ -116,7 +116,7 @@ def handle_followup(request: FollowUpRequest):
     except Exception as e:
         logging.error(f"Error handling follow-up query: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-from utils.memory_manager import MemoryManager
+from .utils.memory_manager import MemoryManager
 
 memory_manager = MemoryManager()
 @app.post("/clear_memory")
