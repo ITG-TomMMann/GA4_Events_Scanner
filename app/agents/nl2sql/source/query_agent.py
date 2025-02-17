@@ -1,6 +1,7 @@
 import openai
 import logging
 from typing import List, Dict
+import os
 from utils.prompt_builder import build_prompt
 from openai import OpenAI
 import openai
@@ -9,6 +10,7 @@ from typing import List, Dict
 from utils.prompt_builder import build_prompt
 from schema_agent import validate_sql
 from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 def generate_sql(nl_query: str, schema: dict, few_shot_examples: List[Dict]) -> str:
