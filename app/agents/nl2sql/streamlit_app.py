@@ -30,14 +30,13 @@ def send_query(message):
     except requests.exceptions.RequestException as e:
         st.error(f"Error communicating with the server: {e}")
 
-# User input section
-with st.form(key='chat_form', clear_on_submit=True):
-    user_input = st.text_input("You:", "")
-    submit_button = st.form_submit_button(label='Send')
-
-    if submit_button and user_input:
+# User input section without using a form
+user_input = st.text_input("You:", key="user_input")
+if st.button("Send"):
+    if user_input.strip() != "":
         st.session_state['conversation'].append({"role": "user", "message": user_input})
         send_query(user_input)
+        st.session_state['user_input'] = ""  # Clear the input field
 
 # Display conversation
 st.markdown("### Conversation")
