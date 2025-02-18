@@ -11,3 +11,4 @@ selenium
 webdriver-manager
 streamlit
 sqlparse
+requests>=2.0.0
