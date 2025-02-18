@@ -6,6 +6,8 @@ if 'session_id' not in st.session_state:
     st.session_state['session_id'] = None
 if 'conversation' not in st.session_state:
     st.session_state['conversation'] = []
+if 'user_input' not in st.session_state:
+    st.session_state['user_input'] = ""
 
 st.set_page_config(page_title="Text-to-SQL Chat Interface", page_icon="💬")
 
