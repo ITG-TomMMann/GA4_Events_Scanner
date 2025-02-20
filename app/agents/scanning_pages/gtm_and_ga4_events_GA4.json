@@ -1,0 +1,14 @@
+[
+  {
+    "event_label": "MANAGE YOUR POLICY :: secondary-link None",
+    "event_action": "https://app.insurance.landrover.co.uk/sign-in",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "MANAGE YOUR POLICY"
+  },
+  {
+    "event_label": "GET A QUOTE :: cta-content",
+    "event_action": "https://insurance.landrover.co.uk/",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "MANAGE YOUR POLICY"
+  }
+]

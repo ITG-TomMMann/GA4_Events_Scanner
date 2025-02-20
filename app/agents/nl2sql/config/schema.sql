@@ -20,7 +20,7 @@ CREATE TABLE GA4_session (
   referrer VARCHAR(255),
   browser VARCHAR(255),
   device_category VARCHAR(255),
-  language VARCHAR(255),
+  language VARCHAR(255), 
   bounced_session INT,
   got_interaction_event INT,
   returning_visitor INT,

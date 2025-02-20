@@ -1,0 +1,3 @@
+event_label,event_action,event_category,button_text
+MANAGE YOUR POLICY :: secondary-link None,https://app.insurance.landrover.co.uk/sign-in,nav: cta linkClicks by class,MANAGE YOUR POLICY
+GET A QUOTE :: cta-content,https://insurance.landrover.co.uk/,nav: cta linkClicks by class,MANAGE YOUR POLICY

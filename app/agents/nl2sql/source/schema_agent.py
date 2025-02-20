@@ -9,6 +9,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 config_dir = os.path.join(current_dir, "..", "config")
 schema_sql_path = os.path.join(config_dir, "schema.sql")
 schema_sql_path = os.path.normpath(schema_sql_path)
+print(schema_sql_path)
 
 # Initialize TableSelector with the absolute path
 table_selector = TableSelector(schema_sql_path=schema_sql_path)

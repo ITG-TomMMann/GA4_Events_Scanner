@@ -1,30 +1,60 @@
-import logging
-from typing import List, Dict
-import os
-from .utils.prompt_builder import build_prompt
-from .schema_agent import validate_sql
-from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
+import os
+import logging
+from langchain_community.chat_models import ChatOpenAI  # Fix deprecated import
+from langchain.schema.runnable import RunnableLambda
+from langchain.schema.output_parser import StrOutputParser
+from langchain.prompts import PromptTemplate
+import json
 
-def generate_sql(nl_query: str, schema: dict, few_shot_examples: List[Dict]) -> str:
+def generate_sql(nl_query: str, schema: dict, few_shot_examples: list) -> str:
     try:
-        prompt = build_prompt(nl_query, schema, few_shot_examples)
-        
-        # Initialize LangChain LLM with updated OpenAI integration
-        llm = OpenAI(model_name="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
-        chain = LLMChain(llm=llm, prompt=PromptTemplate(template=prompt, input_variables=[]))
-        
-        sql_query = chain.run()
+        # Ensure prompt has required inputs
+        if not schema or not few_shot_examples:
+            raise ValueError("Schema or examples missing")
+
+        # Construct a valid schema string
+        formatted_schema = json.dumps(schema, indent=2)
+
+        # Construct few-shot examples
+        formatted_examples = "\n\n".join([
+            f"Example {i+1}:\nNL Query: {ex['nl_query']}\nSQL Query: {ex['sql']}"
+            for i, ex in enumerate(few_shot_examples)
+        ])
+
+        prompt = PromptTemplate(
+            input_variables=["schema", "few_shot_examples", "natural_language_query"],
+            template="""You are an AI assistant that converts natural language queries into SQL statements.
+
+            Schema:
+            {schema}
+
+            Few-shot Examples:
+            {few_shot_examples}
+
+            Natural Language Query:
+            {natural_language_query}
+
+            SQL Query:"""
+        )
+
+        # Use the latest ChatOpenAI import
+        llm = ChatOpenAI(model="gpt-4", openai_api_key=os.getenv("OPENAI_API_KEY"))
+
+        # New LangChain recommended approach
+        chain = prompt | llm | StrOutputParser()
+
+        # Invoke chain with correct parameters
+        sql_query = chain.invoke({
+            "schema": formatted_schema,
+            "few_shot_examples": formatted_examples,
+            "natural_language_query": nl_query
+        })
+
         logging.info(f"Generated SQL Query: {sql_query}")
-        
-        # Validate SQL against schema
-        if validate_sql(sql_query, schema):
-            return sql_query
-        else:
-            logging.error("Generated SQL does not comply with the schema.")
-            raise ValueError("SQL Validation Failed.")
+
+        return sql_query
+
     except Exception as e:
         logging.error(f"Error generating SQL: {e}")
         raise
-
