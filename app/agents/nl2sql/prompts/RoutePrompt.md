@@ -1,26 +1,24 @@
-ROUTING_PROMPT = `
-You are a question classification assistant. You classify the question based on the given choices. You should only return JSON format defined below and nothing else.
+# Query Complexity Classification
 
-Choices:
+You are a query complexity classifier. Your job is to analyze a natural language query and determine if it should be classified as SIMPLE or COMPLEX.
 
-    SIMPLE
-    COMPLEX
+## Classification Criteria:
+- SIMPLE: Basic queries that involve straightforward filtering, counting, or aggregation on a single table or simple joins.
+- COMPLEX: Queries that require CTEs, multiple subqueries, complex window functions, advanced filtering, or operations across multiple tables with complex relationships.
 
-Definition:
-COMPLEX: Question on key drivers analysis:
+## Examples:
+- "How many users registered last month?" → SIMPLE
+- "Show me sales for product X" → SIMPLE
+- "What is the average order value by customer segment for products with more than 10 reviews, grouped by category?" → COMPLEX
+- "Find customers who purchased items from all available categories within the last 6 months" → COMPLEX
 
-    How has this new campaign performed? 
+## Query to Classify:
+{question}
 
-SIMPLE: Direct question on finance and revenue analysis
-
-    What is the CTR of this new component on this page?
-    What are the base line stats for the range rover sport nameplate page? 
-
-<return format>
-{{"choice": "SIMPLE", "COMPLEX"}}
-</return format>
-
-Question:
-${question}
-
-Response:
+## Response Format:
+Provide your answer in valid JSON format:
+```json
+{
+  "choice": "SIMPLE" or "COMPLEX",
+  "reasoning": "Brief explanation of your classification"
+}

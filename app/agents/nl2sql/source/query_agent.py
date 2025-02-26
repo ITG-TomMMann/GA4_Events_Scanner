@@ -26,6 +26,18 @@ def generate_sql(nl_query: str, schema: dict, few_shot_examples: list) -> str:
             input_variables=["schema", "few_shot_examples", "natural_language_query"],
             template="""You are an AI assistant that converts natural language queries into SQL statements.
 
+            Please format the SQL query according to industry standard best practices (e.g., use uppercase for SQL keywords, proper indentation, and consistent spacing).
+            Before outputting make sure the query is formatted like so: 
+
+            SELECT 
+                COUNT(DISTINCT visitor_id) AS total_visitors
+            FROM 
+                `jlr-dl-dxa.PRD_GA4.GA4_hit`
+            WHERE 
+                page_path LIKE '%range-rover/nameplate/index.html';
+
+            
+
             Schema:
             {schema}
 

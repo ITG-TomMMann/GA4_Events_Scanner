@@ -5,6 +5,7 @@ from typing import Optional
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+import sqlparse
 
 from langchain.memory import ConversationBufferMemory
 
@@ -14,9 +15,21 @@ from .schema_agent import get_schema
 from .rag.retrieval import retrieve_examples
 from .query_agent import generate_sql
 from .utils.prompt_builder import build_prompt
-
+from .query_classifier import classify_query_complexity
+from .complex_sql_generator import generate_complex_sql
 
 app = FastAPI()
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with specific origins if needed for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 ###############################################################################
 # 1. Memory Manager that returns a ConversationBufferMemory per session
@@ -79,13 +92,23 @@ def handle_query(request: QueryRequest):
 
         # 6) Branch logic based on classification
 
-        sql = generate_sql(request.query, schema, examples)
+        complexity = classify_query_complexity(request.query, examples)
+        
+        # Step 2: Generate SQL based on complexity
+        if complexity == "SIMPLE":
+            sql = generate_sql(request.query, schema, examples)
+        else:
+            sql = generate_complex_sql(request.query, schema, examples)
+
+
+        formatted_sql = sqlparse.format(sql, reindent=True, keyword_case='upper')
+
 
         # 7) Add the AI response (SQL) to memory
-        memory.chat_memory.add_ai_message(sql)
+        memory.chat_memory.add_ai_message(formatted_sql)
 
         # 8) Return session_id and response
-        return {"session_id": session_id, "sql": sql}
+        return {"session_id": session_id, "sql": formatted_sql}
 
     except Exception as e:
         logging.error(f"Error handling query: {e}", exc_info=True)
@@ -112,11 +135,13 @@ def handle_followup(request: FollowUpRequest):
         prompt = build_prompt(request.follow_up_query, schema, examples)
         sql = generate_sql(request.follow_up_query, schema, examples)
 
+        formatted_sql = sqlparse.format(sql, reindent=True, keyword_case='upper')
+
         # Add AI response
-        memory.chat_memory.add_ai_message(sql)
+        memory.chat_memory.add_ai_message(formatted_sql)
 
         # Return session_id and response
-        return {"session_id": request.session_id, "sql": sql}
+        return {"session_id": request.session_id, "sql": formatted_sql}
 
     except Exception as e:
         logging.error(f"Error handling follow-up: {e}", exc_info=True)

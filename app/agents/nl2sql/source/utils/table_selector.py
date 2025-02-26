@@ -1,7 +1,8 @@
 import os
 import logging
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+# Change these imports
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings  # Note: requires pip install langchain-openai
 from langchain.docstore.document import Document
 from .schema_inference import infer_schema  # Adjust import if needed
 

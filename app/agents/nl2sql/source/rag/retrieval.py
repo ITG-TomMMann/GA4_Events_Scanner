@@ -1,5 +1,5 @@
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.docstore.document import Document
 from ..utils.embedding_utils import compute_embedding
@@ -10,8 +10,8 @@ import os
 def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
     try:
         # Load few-shot examples from JSON
-        with open('examples/examples.json', 'r') as f:
-            examples = json.load(f)
+        with open(r'C:\Users\ThomasMann\Projects\PageScanner\app\agents\nl2sql\examples\examples.json', 'r') as f:
+            examples = json.load(f) 
 
         # Transform examples into Document instances with 'page_content'
         documents = [

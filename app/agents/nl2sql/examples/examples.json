@@ -1,15 +1,269 @@
 [
     {
         "nl_query": "Retrieve the total visitors and CTR for the specified webpage, broken down by market. Count unique visitors and actions triggering CTR events such as 'Join the Waiting List' and 'Build Your Own' for Land Rover.",
-        "sql": "DECLARE start_date_pre_change DATE DEFAULT DATE('2025-01-01');\nDECLARE end_date_post_change DATE DEFAULT DATE('2025-01-28');\n\nWITH CTE_sessions AS (\n    SELECT DISTINCT\n        h.market_code,\n        h.visitor_id,\n        h.session_id,\n        h.page_path,\n        s.bounced_session,\n        s.device_category,\n        s.channel_grouping,\n        s.medium,\n        h.hit_datetime AS visit_datetime,\n        h.visit_start_date\n    FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h\n    LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s\n        ON h.session_id = s.session_id\n    WHERE \n        h.visit_start_date BETWEEN start_date_pre_change AND end_date_post_change\n        AND s.visit_start_date BETWEEN start_date_pre_change AND end_date_post_change\n        AND h.market_code IN (\"US\", 'CA', 'GB')\n        AND h.page_path IN ('www.landrover.co.uk/index.html', 'www.landroverusa.com/index.html', 'www.landrover.ca/en/index.html',\n                             'www.landroverusa.com/range-rover/index.html', 'www.landroverusa.com/defender/index.html', 'www.landroverusa.com/discovery/index.html',\n                             \"www.landrover.co.uk/range-rover/index.html\", \"www.landrover.co.uk/defender/index.html\", \"www.landrover.co.uk/discovery/index.html\",\n                             \"www.landrover.ca/en/range-rover/index.html\", \"www.landrover.ca/en/defender/index.html\", \"www.landrover.ca/en/discovery/index.html\")\n        AND h.brand = \"Land Rover\"\n),\n\nCTE_events AS (\n    SELECT\n        s.market_code,\n        s.visitor_id,\n        s.device_category,\n        s.channel_grouping,\n        s.medium,\n        s.visit_start_date,\n        s.session_id,\n        hit.hit_datetime,\n        hit.page_path,\n        CASE \n            WHEN event_label IN (\n                'JOIN THE WAITING LIST :: cta-content',\n                'KEEP ME INFORMED :: cta-content',\n                'FIND OUT MORE :: cta-content',\n                'BUILD YOUR OWN :: cta-content',\n                'BUILD AND ORDER :: secondary-link None',\n                'EXPLORE :: cta-content',\n                'BUILD AND ORDER :: cta-content',\n                'BOOK YOUR TEST DRIVE :: secondary-link None',\n                'CHECK AVAILABILITY :: secondary-link None',\n                'EXPLORE FINANCE OPTIONS :: secondary-link None',\n                'BUILD AND RESERVE :: cta-content',\n                'LEARN MORE :: cta-content',\n                'BUILD AND RESERVE :: secondary-link None',\n                'ENTER :: HouseOfBrandHome__single-cta'\n            ) THEN 'CTR'\n        END AS event_type,\n        CASE \n            WHEN s.bounced_session = 1 THEN hit.visitor_id\n        END AS bounced_visitor\n    FROM CTE_sessions s\n    JOIN `jlr-dl-dxa.PRD_GA4.GA4_hit` hit\n        ON s.session_id = hit.session_id\n        AND hit.hit_datetime > s.visit_datetime\n)\n\nSELECT\n    rc.market_code,\n    rc.page_path, \n    rc.device_category,\n    rc.channel_grouping,\n    rc.medium, \n    COUNT(DISTINCT rc.visitor_id) AS total_page_visitors,\n    COUNT(DISTINCT CASE WHEN e.event_type = 'CTR' THEN e.visitor_id END) AS CTR,\n    COUNT(DISTINCT e.bounced_visitor) AS total_bounced_visitor\nFROM CTE_sessions rc\nLEFT JOIN CTE_events e \n    ON rc.visitor_id = e.visitor_id \n    AND rc.page_path = e.page_path\n    AND rc.visit_start_date = e.visit_start_date\nGROUP BY 1,2,3,4,5;"
+        "sql": "DECLARE start_date_pre_change DATE DEFAULT DATE('2025-01-01');\nDECLARE end_date_post_change DATE DEFAULT DATE('2025-01-28');\n\nWITH CTE_sessions AS (\n    SELECT DISTINCT\n        h.market_code,\n        h.visitor_id,\n        h.session_id,\n        h.page_path,\n        s.bounced_session,\n        s.device_category,\n        s.channel_grouping,\n        s.medium,\n        h.hit_datetime AS visit_datetime,\n        h.visit_start_date\n    FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h\n    LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s\n        ON h.session_id = s.session_id\n    WHERE \n        h.visit_start_date BETWEEN start_date_pre_change AND end_date_post_change\n        AND s.visit_start_date BETWEEN start_date_pre_change AND end_date_post_change\n        AND h.market_code IN (\"US\", 'CA', 'GB')\n        AND h.page_path IN ('www.landrover.co.uk/index.html', 'www.landroverusa.com/index.html', 'www.landrover.ca/en/index.html',\n                             'www.landroverusa.com/range-rover/index.html', 'www.landroverusa.com/defender/index.html', 'www.landroverusa.com/discovery/index.html',\n                             \"www.landrover.co.uk/range-rover/index.html\", \"www.landrover.co.uk/defender/index.html\", \"www.landrover.co.uk/discovery/index.html\",\n                             \"www.landrover.ca/en/range-rover/index.html\", \"www.landrover.ca/en/defender/index.html\", \"www.landrover.ca/en/discovery/index.html\")\n        AND h.brand = \"Land Rover\"\n),\n\nCTE_events AS (\n    SELECT\n        s.market_code,\n        s.visitor_id,\n        s.device_category,\n        s.channel_grouping,\n        s.medium,\n        s.visit_start_date,\n        s.session_id,\n        hit.hit_datetime,\n        hit.page_path,\n        CASE \n            WHEN event_label IN (\n                'JOIN THE WAITING LIST :: cta-content',\n                'KEEP ME INFORMED :: cta-content',\n                'FIND OUT MORE :: cta-content',\n                'BUILD YOUR OWN :: cta-content',\n                'BUILD AND ORDER :: secondary-link None',\n                'EXPLORE :: cta-content',\n                'BUILD AND ORDER :: cta-content',\n                'BOOK YOUR TEST DRIVE :: secondary-link None',\n                'CHECK AVAILABILITY :: secondary-link None',\n                'EXPLORE FINANCE OPTIONS :: secondary-link None',\n                'BUILD AND RESERVE :: cta-content',\n                'LEARN MORE :: cta-content',\n                'BUILD AND RESERVE :: secondary-link None',\n                'ENTER :: HouseOfBrandHome__single-cta'\n            ) THEN 'CTR'\n        END AS event_type,\n        CASE \n            WHEN s.bounced_session = 1 THEN hit.visitor_id\n        END AS bounced_visitor\n    FROM CTE_sessions s\n    JOIN `jlr-dl-dxa.PRD_GA4.GA4_hit` hit\n        ON s.session_id = hit.session_id\n        AND hit.hit_datetime > s.visit_datetime\n)\n\nSELECT\n    rc.market_code,\n    rc.page_path, \n    rc.device_category,\n    rc.channel_grouping,\n    rc.medium, \n    COUNT(DISTINCT rc.visitor_id) AS total_page_visitors,\n    COUNT(DISTINCT CASE WHEN e.event_type = 'CTR' THEN e.visitor_id END) AS CTR,\n    COUNT(DISTINCT e.bounced_visitor) AS total_bounced_visitor\nFROM CTE_sessions rc\nLEFT JOIN CTE_events e \n    ON rc.visitor_id = e.visitor_id \n    AND rc.page_path = e.page_path\n    AND rc.visit_start_date = e.visit_start_date\nGROUP BY 1,2,3,4,5;",
+        "complexity" : "complex"
     },
     {
         "nl_query": "Retrieve the total number of unique visitors for the Land Rover webpage 'www.landrover.co.uk/index.html' for January 1–2, 2025. Group the data by market, page path, device category, channel grouping, and visit start date.",
         "sql": "SELECT DISTINCT h.market_code, h.page_path, s.device_category, s.channel_grouping, h.visit_start_date, COUNT(DISTINCT h.visitor_id) as total_visitors FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s ON h.session_id = s.session_id WHERE h.visit_start_date BETWEEN DATE('2025-01-01') AND DATE('2025-01-02') AND s.visit_start_date BETWEEN DATE('2025-01-01') AND DATE('2025-01-02') AND h.market_code IN ('US', 'CA', 'GB') AND h.page_path IN ('www.landrover.co.uk/index.html') AND h.brand = 'Land Rover' GROUP BY 1,2,3,4,5;"
+        ,"complexity" : "simple"
     },
 
     {
         "nl_query": "Retrieve the number of unique visitors for the Range Rover Sport webpage, grouped by campaign, channel grouping, and referrer. Aggregate data by visit start date, truncated to weeks for trend analysis.",
         "sql": "SELECT h.market_code, s.campaign, s.channel_grouping, s.medium, s.referrer, DATE_TRUNC(h.visit_start_date, WEEK) AS week, h.visit_start_date, COUNT(DISTINCT h.visitor_id) AS total_users FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` h LEFT JOIN `jlr-dl-dxa.PRD_GA4.GA4_session` s ON h.session_id = s.session_id WHERE h.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND s.visit_start_date BETWEEN DATE('2024-09-01') AND DATE('2024-09-01') AND h.brand = 'Land Rover' AND page_path LIKE '%range-rover/range-rover-sport/index.html' GROUP BY 1,2,3,4,5,6,7"
+        ,"complexity" : "simple"
+    },
+
+    {
+        "nl_query": "How many distinct sessions occurred between Aug 1, 2024 and Jan 31, 2025 for Land Rover in selected markets?",
+        "sql": "SELECT COUNT(DISTINCT session_id) AS num_sessions\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\n  AND market_code IN ('GB','DE','US','IT','JP')"
+        ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the total number of page views for Land Rover from Aug 1, 2024 to Jan 31, 2025?",
+        "sql": "SELECT COUNT(*) AS total_pageviews\nFROM jlr-dl-dxa.PRD_GA4.GA4_hit\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\n  AND hit_type = 'PAGE'\n  AND page_path IS NOT NULL"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "List distinct campaign names and their first channel grouping for sessions between Aug 1, 2024 and Jan 31, 2025.",
+        "sql": "SELECT DISTINCT session_first_campaign, channel_grouping AS first_channel\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the average session duration in minutes for Land Rover sessions in selected markets?",
+        "sql": "SELECT ROUND(AVG(time_on_site_seconds)/60,2) AS avg_session_duration_mins\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\n  AND market_code IN ('GB','DE','US','IT','JP')"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions included a configurator page (config_inspire, config_summary, or config_personalise)?",
+        "sql": "WITH config_sessions AS (\n  SELECT DISTINCT session_id\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n    AND (\n         ((host_name LIKE '%buildyour%' OR host_name = 'www.rangerover.com') AND (page_path LIKE '%inspire%' OR page_path LIKE '%curatedchoices%'))\n      OR ((host_name LIKE '%buildyour%' OR host_name = 'www.rangerover.com') AND (page_path LIKE '%summary%' OR page_path LIKE '%jdxpayoff%'))\n      OR ((host_name LIKE '%buildyour%' OR host_name = 'www.rangerover.com') AND content_group_4 = 'configurator')\n    )\n)\nSELECT COUNT(*) AS sessions_with_config\nFROM config_sessions"
+    ,"complexity" : "complex"
+    },
+    {
+        "nl_query": "What is the most common landing page group for Land Rover sessions?",
+        "sql": "WITH landing_pages AS (\n  SELECT session_id, \n         CASE\n           WHEN (host_name <> 'www.rangerover.com' AND REPLACE(REGEXP_EXTRACT(page_path, r'^[^?&#]+'), host_name, '') = '/index.html') THEN 'homepage'\n           ELSE 'other'\n         END AS landing_page\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n)\nSELECT landing_page, COUNT(DISTINCT session_id) AS session_count\nFROM landing_pages\nGROUP BY landing_page\nORDER BY session_count DESC\nLIMIT 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions were single page sessions versus multi-page sessions for Land Rover?",
+        "sql": "WITH session_page_counts AS (\n  SELECT session_id, COUNT(*) AS page_count\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n  GROUP BY session_id\n)\nSELECT \n  SUM(CASE WHEN page_count = 1 THEN 1 ELSE 0 END) AS single_page_sessions,\n  SUM(CASE WHEN page_count > 1 THEN 1 ELSE 0 END) AS multi_page_sessions\nFROM session_page_counts"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had any enquiry interaction?",
+        "sql": "SELECT COUNT(DISTINCT session_id) AS sessions_with_enquiry\nFROM jlr-dl-dxa.PRD_GA4.GA4_session_interaction_nameplate\nWHERE enquiry_flag = 1\n  AND visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had a configuration complete interaction?",
+        "sql": "SELECT COUNT(DISTINCT session_id) AS sessions_with_config_completes\nFROM jlr-dl-dxa.PRD_GA4.GA4_session_interaction_nameplate\nWHERE interaction_id = 11\n  AND visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What percentage of sessions are new versus returning?",
+        "sql": "WITH session_order AS (\n  SELECT visitor_id, session_id,\n         ROW_NUMBER() OVER (PARTITION BY visitor_id ORDER BY visit_start_date) AS session_number\n  FROM jlr-dl-dxa.PRD_GA4.GA4_session\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n)\nSELECT \n  SUM(CASE WHEN session_number = 1 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS pct_new_sessions,\n  SUM(CASE WHEN session_number > 1 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS pct_returning_sessions\nFROM session_order"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the average number of pages per session for Land Rover?",
+        "sql": "SELECT ROUND(AVG(total_page_views),2) AS avg_pages_per_session\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions were from mobile devices?",
+        "sql": "SELECT COUNT(*) AS mobile_sessions\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\n  AND device_category = 'mobile'"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions were from desktop devices?",
+        "sql": "SELECT COUNT(*) AS desktop_sessions\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\n  AND device_category = 'desktop'"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Extract campaign components such as brand, channel, market, and nameplate from the campaign field for sessions in Land Rover.",
+        "sql": "SELECT \n  REGEXP_EXTRACT(LOWER(campaign), r'^[a-z]{2}_(?:nv_)?([a-z]{2})_') AS cmp_brand,\n  REGEXP_EXTRACT(LOWER(campaign), r'(aud|dis|psoc|psocdp|prg|rad|olv|vod|sem|prt|ooh|cin|prog)') AS cmp_channel,\n  REGEXP_EXTRACT(LOWER(campaign), r'^([a-z]{2})_') AS cmp_market,\n  REGEXP_EXTRACT(LOWER(campaign), r'^[a-z]{2}_(?:nv_)?[a-z]{2}_([a-z0-9]{2,5})_') AS cmp_nameplate\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nLIMIT 10"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What are the top traffic sources for Land Rover sessions?",
+        "sql": "SELECT session_first_source, COUNT(DISTINCT session_id) AS sessions_count\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY session_first_source\nORDER BY sessions_count DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What are the counts of sessions by medium for Land Rover?",
+        "sql": "SELECT session_first_medium, COUNT(DISTINCT session_id) AS sessions_count\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY session_first_medium\nORDER BY sessions_count DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the distribution of first channel grouping for Land Rover sessions?",
+        "sql": "SELECT session_first_channel_grouping, COUNT(DISTINCT session_id) AS sessions_count\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY session_first_channel_grouping\nORDER BY sessions_count DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions are there per market code for Land Rover?",
+        "sql": "SELECT market_code, COUNT(DISTINCT session_id) AS sessions_count\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY market_code\nORDER BY sessions_count DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Identify duplicate session IDs in the LV_session_campaign_flags table.",
+        "sql": "SELECT session_id, COUNT(*) AS num_rows\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nGROUP BY session_id\nHAVING COUNT(*) > 1\nORDER BY num_rows DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the distribution of new versus returning sessions for Land Rover?",
+        "sql": "WITH session_order AS (\n  SELECT visitor_id, session_id,\n         ROW_NUMBER() OVER (PARTITION BY visitor_id ORDER BY visit_start_date) AS session_number\n  FROM jlr-dl-dxa.PRD_GA4.GA4_session\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n)\nSELECT \n  SUM(CASE WHEN session_number = 1 THEN 1 ELSE 0 END) AS new_sessions,\n  SUM(CASE WHEN session_number > 1 THEN 1 ELSE 0 END) AS returning_sessions\nFROM session_order"
+    ,"complexity" : "complex"
+    },
+    {
+        "nl_query": "Count the number of sessions with brand interactions for Defender, Discovery, and RangeRover.",
+        "sql": "SELECT\n  SUM(IF(defender_interaction = 1, 1, 0)) AS defender_sessions,\n  SUM(IF(discovery_interaction = 1, 1, 0)) AS discovery_sessions,\n  SUM(IF(RangeRover_Interaction = 1, 1, 0)) AS rangerover_sessions\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had a configuration start interaction?",
+        "sql": "SELECT COUNT(*) AS sessions_with_config_start\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE sessions_with_config_start > 0"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had any engagement interaction?",
+        "sql": "SELECT COUNT(*) AS sessions_with_engagement\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE sessions_with_any_engagement > 0"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the average session duration in minutes by market?",
+        "sql": "SELECT market_code, ROUND(AVG(time_on_site_seconds)/60,2) AS avg_session_duration_mins\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY market_code\nORDER BY market_code"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Aggregate campaign performance metrics by market code and landing page group.",
+        "sql": "SELECT market_code, page_sequence_1 AS landing_page_group,\n       COUNT(DISTINCT session_id) AS num_sessions,\n       SUM(sessions_with_config_start) AS total_config_starts,\n       SUM(sessions_with_any_engagement) AS total_engagements,\n       SUM(sessions_with_any_enquiry) AS total_enquiries\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nGROUP BY market_code, landing_page_group\nORDER BY num_sessions DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count sessions with a configuration page flag (Config flag) by campaign.",
+        "sql": "SELECT session_first_campaign, COUNT(DISTINCT session_id) AS sessions_with_config\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE Config = 1\nGROUP BY session_first_campaign\nORDER BY sessions_with_config DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Show counts of sessions with various content touchpoints (Forms, ApprovedUsed, BuildYourOwn, etc.).",
+        "sql": "SELECT \n  SUM(Forms) AS total_forms,\n  SUM(ApprovedUsed) AS total_approvedused,\n  SUM(BuildYourOwn) AS total_buildyourown,\n  SUM(SavedBuilds) AS total_savedbuilds,\n  SUM(OffersFinance) AS total_offersfinance,\n  SUM(ModelsSpecifications) AS total_modelsspecifications,\n  SUM(Electric) AS total_electric,\n  SUM(Ownership) AS total_ownership,\n  SUM(Experience) AS total_experience\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Aggregate overall interaction metrics including config starts, completes, and enquiries.",
+        "sql": "SELECT \n  SUM(sessions_with_config_start) AS total_config_starts,\n  SUM(sessions_with_config_completes) AS total_config_completes,\n  SUM(sessions_with_any_enquiry) AS total_enquiries\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count sessions with zero brand interactions (ZeroBrand flag) from the campaign flags table.",
+        "sql": "SELECT COUNT(*) AS zero_brand_sessions\nFROM (\n  SELECT session_id,\n         CASE WHEN (COALESCE(RangeRover, 0) + COALESCE(Discovery, 0) + COALESCE(Defender, 0)) = 0 THEN 1 ELSE 0 END AS ZeroBrand\n  FROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\n) \nWHERE ZeroBrand = 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count sessions with exactly one brand interaction (SingleBrand flag).",
+        "sql": "SELECT COUNT(*) AS single_brand_sessions\nFROM (\n  SELECT session_id,\n         CASE WHEN (COALESCE(RangeRover, 0) + COALESCE(Discovery, 0) + COALESCE(Defender, 0)) = 1 THEN 1 ELSE 0 END AS SingleBrand\n  FROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\n)\nWHERE SingleBrand = 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count sessions with multiple brand interactions (MultiBrand flag).",
+        "sql": "SELECT COUNT(*) AS multi_brand_sessions\nFROM (\n  SELECT session_id,\n         CASE WHEN (COALESCE(RangeRover, 0) + COALESCE(Discovery, 0) + COALESCE(Defender, 0)) > 1 THEN 1 ELSE 0 END AS MultiBrand\n  FROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\n)\nWHERE MultiBrand = 1"
+    ,"complexity" : "complex"
+    },
+    {
+        "nl_query": "Map campaign codes to media channels using the campaign field.",
+        "sql": "SELECT \n  campaign,\n  CASE REGEXP_EXTRACT(LOWER(campaign), r'(gmc[0-9]+)')\n    WHEN 'gmc1000' THEN 'Google Search'\n    WHEN 'gmc2000' THEN 'Google Display Network'\n    WHEN 'gmc3000' THEN 'Facebook'\n    WHEN 'gmc4000' THEN 'Instagram'\n    WHEN 'gmc5000' THEN 'YouTube'\n    WHEN 'gmc6000' THEN 'LinkedIn'\n    WHEN 'gmc7000' THEN 'Twitter'\n    WHEN 'gmc8000' THEN 'Bing Ads'\n    WHEN 'gmc9000' THEN 'CRM / Direct Email'\n    ELSE 'Unknown Media Channel'\n  END AS media_channel\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE campaign IS NOT NULL\nLIMIT 10"
+    ,"complexity" : "complex"
+    },
+    {
+        "nl_query": "List the landing page group and exit page group for each session from the campaign flags table.",
+        "sql": "SELECT session_id, page_sequence_1 AS landing_page_group, session_last_page_group AS exit_page_group\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nLIMIT 100"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Show sessions with their first channel grouping, source, and medium.",
+        "sql": "SELECT session_id, session_first_channel_grouping, session_first_source, session_first_medium\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nLIMIT 100"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count the number of sessions per cluster from the ITG_MC_SESSION_CLUSTERS dataset.",
+        "sql": "SELECT Cluster_WIth_Bounce_Infil, COUNT(DISTINCT session_id) AS sessions_count\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.ITG_MC_SESSION_CLUSTERS_20240801_20250131\nGROUP BY Cluster_WIth_Bounce_Infil\nORDER BY sessions_count DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Join campaign flags with session clusters to count sessions per market and cluster.",
+        "sql": "SELECT sess.market_code, clus.Cluster_WIth_Bounce_Infil, COUNT(DISTINCT sess.session_id) AS num_sessions\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25 sess\nLEFT JOIN jlr-dl-dxa.ANALYST_SANDPIT_EU.ITG_MC_SESSION_CLUSTERS_20240801_20250131 clus\n  ON sess.session_id = clus.session_id\nGROUP BY sess.market_code, clus.Cluster_WIth_Bounce_Infil\nORDER BY num_sessions DESC"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions have an 'Electric' content touchpoint?",
+        "sql": "SELECT COUNT(*) AS sessions_with_electric\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE Electric = 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count distinct sessions with the 'build-your-own' flag set.",
+        "sql": "SELECT COUNT(DISTINCT session_id) AS sessions_with_build_your_own\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE BuildYourOwn = 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Calculate the total number of pages viewed per session.",
+        "sql": "SELECT session_id, SUM(total_page_views) AS total_pages\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY session_id"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had only a single page view?",
+        "sql": "WITH session_page_counts AS (\n  SELECT session_id, COUNT(*) AS page_count\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n  GROUP BY session_id\n)\nSELECT COUNT(*) AS single_page_sessions\nFROM session_page_counts\nWHERE page_count = 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had multiple page views?",
+        "sql": "WITH session_page_counts AS (\n  SELECT session_id, COUNT(*) AS page_count\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n  GROUP BY session_id\n)\nSELECT COUNT(*) AS multi_page_sessions\nFROM session_page_counts\nWHERE page_count > 1"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What are the most common page sequences for sessions?",
+        "sql": "WITH page_sequences AS (\n  SELECT session_id, STRING_AGG(page_group, ' > ' ORDER BY hit_datetime) AS page_sequence\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n  GROUP BY session_id\n)\nSELECT page_sequence, COUNT(*) AS sequence_count\nFROM page_sequences\nGROUP BY page_sequence\nORDER BY sequence_count DESC\nLIMIT 10"
+    ,"complexity" : "complex"
+    },
+    {
+        "nl_query": "What is the average number of pages viewed per session?",
+        "sql": "WITH session_page_counts AS (\n  SELECT session_id, COUNT(*) AS page_count\n  FROM jlr-dl-dxa.PRD_GA4.GA4_hit\n  WHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n    AND brand = 'Land Rover'\n    AND hit_type = 'PAGE'\n  GROUP BY session_id\n)\nSELECT ROUND(AVG(page_count),2) AS avg_pages_per_session\nFROM session_page_counts"
+        ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "List sessions that had any engagement interaction.",
+        "sql": "SELECT DISTINCT session_id\nFROM jlr-dl-dxa.PRD_GA4.GA4_session_interaction_nameplate\nWHERE engagement_flag = 1\n  AND visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\nLIMIT 100"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Count sessions with enquiry interactions that are not mapped to specific enquiry interaction IDs.",
+        "sql": "SELECT COUNT(DISTINCT session_id) AS sessions_with_other_enquiry\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE sessions_with_enquiry_other > 0"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "Extract the campaign objective from the campaign field using regex (objective1 and objective2).",
+        "sql": "SELECT \n  REGEXP_EXTRACT(LOWER(campaign), r'(do|think|see|thk)') AS cmp_objective1,\n  REGEXP_EXTRACT(LOWER(campaign), r'(lead|conv|aware|engage|traffic|consideration|purchase|retention)') AS cmp_objective2\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE campaign IS NOT NULL\nLIMIT 10"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "List sessions with their visitor's first channel grouping and session's first channel grouping.",
+        "sql": "SELECT session_id, visitor_first_channel_grouping, session_first_channel_grouping\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nLIMIT 100"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "How many sessions had both configuration start and configuration complete interactions?",
+        "sql": "SELECT COUNT(*) AS sessions_with_config_start_and_complete\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nWHERE sessions_with_config_start > 0 AND sessions_with_config_completes > 0"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "What is the total session duration in minutes for Land Rover sessions aggregated by market?",
+        "sql": "SELECT market_code, ROUND(SUM(time_on_site_seconds)/60,2) AS total_session_duration_mins\nFROM jlr-dl-dxa.PRD_GA4.GA4_session\nWHERE visit_start_date BETWEEN DATE('2024-08-01') AND DATE('2025-01-31')\n  AND brand = 'Land Rover'\nGROUP BY market_code\nORDER BY market_code"
+    ,"complexity" : "simple"
+    },
+    {
+        "nl_query": "List sessions with campaign details and aggregated interaction metrics.",
+        "sql": "SELECT session_id, session_first_campaign, cmp_brand, cmp_channel, cmp_market, cmp_nameplate,\n       sessions_with_config_start, sessions_with_config_completes, sessions_with_any_engagement, sessions_with_any_enquiry\nFROM jlr-dl-dxa.ANALYST_SANDPIT_EU.LV_session_campaign_flags_aug24tojan25\nLIMIT 100"
+   ,"complexity" : "complex"
     }
 ]
