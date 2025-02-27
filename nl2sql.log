@@ -2894,3 +2894,40 @@ WHERE
     AND hit.page_path LIKE '%brand/index.html'
 GROUP BY 
     market_code;
+2025-02-27 14:28:25,600 - root - INFO - Loaded schema from JSON file.
+2025-02-27 14:28:26,738 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-02-27 14:28:26,987 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-02-27 14:28:27,008 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-02-27 14:28:27,015 - root - INFO - FAISS index loaded.
+2025-02-27 14:28:27,943 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-27 14:28:27,960 - root - INFO - Retrieved 5 structured examples.
+2025-02-27 14:28:30,288 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 14:28:30,389 - root - INFO - Query classified as: COMPLEX
+2025-02-27 14:28:44,453 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 14:28:44,471 - root - INFO - Generated Complex SQL Query: ```sql
+-- CTE to calculate total sessions
+WITH total_sessions AS (
+    SELECT COUNT(*) AS total
+    FROM `jlr-dl-dxa.PRD_GA4.GA4_session`
+    WHERE market_code = 'UK'
+      AND brand IN ('LRDX', 'RRDX', 'JDX')
+),
+
+-- CTE to calculate sessions per device
+device_sessions AS (
+    SELECT device_category, COUNT(*) AS device_count
+    FROM `jlr-dl-dxa.PRD_GA4.GA4_session`
+    WHERE market_code = 'UK'
+      AND brand IN ('LRDX', 'RRDX', 'JDX')
+    GROUP BY device_category
+)
+
+-- Main query to calculate percentage
+SELECT ds.device_category AS Device,
+       CONCAT(ROUND((ds.device_count / ts.total) * 100, 2), '%') AS Percentage
+FROM device_sessions ds
+CROSS JOIN total_sessions ts
+ORDER BY ds.device_count DESC;
+```
+
+This query first calculates the total number of sessions for the specified brands in the UK market. Then, it calculates the number of sessions for each device category. Finally, it calculates the percentage of total sessions that each device category represents. The results are ordered by the number of sessions per device in descending order.

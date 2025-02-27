@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set working directory
-WORKDIR /app/agents/nl2sql
+WORKDIR /app/nl2sql
 
 # Install dependencies
 COPY requirements.txt .
