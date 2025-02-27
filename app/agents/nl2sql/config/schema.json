@@ -1,0 +1,643 @@
+{
+    "definitions": {
+        "brand_page": "A webpage that represents an entire brand. For example, https://www.rangerover.com/de-de/index.html",
+        "nameplate_page": "A webpage dedicated to a specific model or product within a brand. For example, https://www.rangerover.com/de-de/range-rover/index.html."
+      },
+    
+    "tables": {
+      "GA4_session": {
+        "description": "One row for each session, providing session level attributes",
+        "partition_by": "visit_start_datetime",
+        "cluster_by": ["property_id", "source", "medium", "campaign"],
+        "columns": {
+            "session_id": {
+                "type": "VARCHAR(255)",
+                "primary_key": true,
+                "description": "Unique identifier for a session",
+                "example": "803392961.1600283372-1669305815"
+            },
+            "visitor_id": {
+                "type": "VARCHAR(255)",
+                "description": "Unique identifier for a visitor",
+                "example": "803392961.1600283372-1669305815"
+            },
+            "user_id": {
+                "type": "VARCHAR(255)",
+                "description": "JLR User ID (where available for logged-in visitors)",
+                "example": "SVCRM_0119286181"
+            },
+            "visit_start_time": {
+                "type": "INT",
+                "description": "Visit start time (Session start). Expressed as POSIX time (seconds since Jan 1, 1970, UTC)",
+                "example": "1669291537222917"
+            },
+            "visit_start_time2": {
+                "type": "TIME",
+                "description": "Visit start time (Session start) in HH:MM:SS (UTC)",
+                "example": "12:05:37.222917"
+            },
+            "visit_start_date": {
+                "type": "DATE",
+                "description": "Visit start date (Session start) in YYYY-MM-DD (UTC)",
+                "example": "2020-07-25"
+            },
+            "visit_start_datetime": {
+                "type": "DATETIME",
+                "description": "Visit start date/time (Session start) in YYYY-MM-DD HH:MM:SS.DDDDDD (UTC)",
+                "example": "2022-11-24 15:05:40.505014 UTC"
+            },
+            "property_id": {
+                "type": "VARCHAR(255)",
+                "description": "Identifier for the Google Analytics 4 Property (GA4P)",
+                "example": "GA4P1, GA4P2"
+            },
+            "brand": {
+                "type": "VARCHAR(255)",
+                "description": "JLR Brand",
+                "example": "Jaguar, Land Rover"
+            },
+            "market_code": {
+                "type": "VARCHAR(255)",
+                "description": "2-character market code (FK to GA4_lookup_market)",
+                "example": "GB, DE, CN, US, MX"
+            },
+            "GA_client_id": {
+                "type": "VARCHAR(255)",
+                "description": "Unique identifier for a visitor (Google Analytics client ID)",
+                "example": "818810637.1594220063"
+            },
+            "session_number": {
+                "type": "INT",
+                "description": "Session number for this user (1 if first session)",
+                "example": "1, 2, 3"
+            },
+            "visit_id": {
+                "type": "INT",
+                "description": "A GA4 identifier for this visit",
+                "example": "1669324414"
+            },
+            "source": {
+                "type": "VARCHAR(255)",
+                "description": "The source of the traffic",
+                "example": "google, (direct), bing, facebook"
+            },
+            "medium": {
+                "type": "VARCHAR(255)",
+                "description": "The medium of the traffic",
+                "example": "cpc, organic, display"
+            },
+            "campaign": {
+                "type": "VARCHAR(255)",
+                "description": "The campaign value for the traffic source",
+                "example": "be_lr_l560_20my_fy1920q3_01_na_lmo-0463_display_s_01_na_11509"
+            },
+            "ad_content": {
+                "type": "VARCHAR(255)",
+                "description": "The ad content of the traffic source",
+                "example": "booking a service online, LogIn"
+            },
+            "keyword": {
+                "type": "VARCHAR(255)",
+                "description": "The keyword of the traffic source",
+                "example": "jaguar uk map updates, jaguar parts uk"
+            },
+            "referrer": {
+                "type": "VARCHAR(255)",
+                "description": "The referrer of the traffic source",
+                "example": "https://www.landrover.co.uk/, https://uk.search.yahoo.com/"
+            },
+            "browser": {
+                "type": "VARCHAR(255)",
+                "description": "The browser used",
+                "example": "Chrome, Firefox"
+            },
+            "device_category": {
+                "type": "VARCHAR(255)",
+                "description": "The type of device",
+                "example": "mobile, tablet, desktop"
+            },
+            "language": {
+                "type": "VARCHAR(255)",
+                "description": "The language the device is set to use",
+                "example": "en-gb, zh-hk, es-es"
+            },
+            "bounced_session": {
+                "type": "INT",
+                "description": "Indicates whether the session was a bounced single-page session",
+                "example": "0 or 1 (where 1 means bounced session)"
+            },
+            "got_interaction_event": {
+                "type": "INT",
+                "description": "Indicates whether the session had interaction events",
+                "example": "0 or 1 (where 1 means had an interaction)"
+            },
+            "returning_visitor": {
+                "type": "INT",
+                "description": "Indicates whether the session was for a returning visitor",
+                "example": "0 = New visitor, 1 = Returning visitor"
+            },
+            "total_hits": {
+                "type": "INT",
+                "description": "Total number of hits within the session",
+                "example": "1, 2, 3"
+            },
+            "total_page_views": {
+                "type": "INT",
+                "description": "Total number of page view hits within the session",
+                "example": "1, 2, 3"
+            },
+            "time_on_site_seconds": {
+                "type": "INT",
+                "description": "Total time of the session expressed in seconds",
+                "example": "1, 2, 3"
+            },
+            "event_start_date": {
+                "type": "DATE",
+                "description": "Date of event (Event start) in YYYY-MM-DD (UTC)",
+                "example": "2020-07-25"
+            },
+            "channel_grouping": {
+                "type": "VARCHAR(255)",
+                "description": "Channel grouping derived from source, medium, campaign",
+                "example": "Paid Search, Paid Social"
+            }
+        }
+      },
+      "GA4_hit": {
+        "description": "One row for each hit in each session (holding the event hits and page view hits)",
+        "columns": {
+        "hit_id": {
+            "type": "VARCHAR(255)",
+            "primary_key": true,
+            "description": "Unique identifier for a hit",
+            "example": "user_pseudo_id + `-` + ga_session_id + `-` + hit_number"
+        },
+        "hit_type": {
+            "type": "VARCHAR(255)",
+            "description": "Identifies the type of hit; `EVENT` for event hits, `PAGE` for page-view hits",
+            "example": "EVENT, PAGE"
+        },
+        "session_id": {
+            "type": "VARCHAR(255)",
+            "description": "Unique identifier for a session (and the FK to GA4_session)",
+            "example": "user_pseudo_id + `-` + ga_session_id"
+        },
+        "hit_number": {
+            "type": "INT",
+            "description": "The sequenced hit number. The first hit of each session is 1.",
+            "example": "1, 2, 3"
+        },
+        "visitor_id": {
+            "type": "VARCHAR(255)",
+            "description": "Unique identifier for a visitor",
+            "example": "27529390.1655505096"
+        },
+        "user_id": {
+            "type": "VARCHAR(255)",
+            "description": "JLR User ID (where available for logged-in visitors)",
+            "example": "SVCRM_0119286181"
+        },
+        "visit_start_time": {
+            "type": "INT",
+            "description": "Visit start time (session start), expressed as POSIX (seconds since 1970-01-01 UTC)",
+            "example": "1668556689824538"
+        },
+        "visit_start_time2": {
+            "type": "TIME",
+            "description": "Visit start time in HH:MM:SS (UTC)",
+            "example": "23:58:09.824538"
+        },
+        "visit_start_date": {
+            "type": "DATE",
+            "description": "Visit start date in YYYY-MM-DD (UTC)",
+            "example": "2020-07-25"
+        },
+        "visit_start_datetime": {
+            "type": "DATETIME",
+            "description": "Visit start date and time in YYYY-MM-DD HH:MM:SS.DDDDDD (UTC)",
+            "example": "2022-11-15 23:58:09.824538 UTC"
+        },
+        "hit_datetime": {
+            "type": "DATETIME",
+            "description": "Hit date and time in YYYY-MM-DD HH:MM:SS.DDDDDD (UTC)",
+            "example": "2022-11-15 23:59:15.310512 UTC"
+        },
+        "hit_time": {
+            "type": "TIME",
+            "description": "Hit time in HH:MM:SS.DDDD (UTC)",
+            "example": "23:59:15.310512"
+        },
+        "property_id": {
+            "type": "VARCHAR(255)",
+            "description": "GA4 Property identifier",
+            "example": "GA4P1, GA4P2, GA4P3"
+        },
+        "brand": {
+            "type": "VARCHAR(255)",
+            "description": "JLR Brand",
+            "example": "Jaguar, Land Rover"
+        },
+        "market_code": {
+            "type": "VARCHAR(255)",
+            "description": "2-character market-code (FK to GA4_lookup_market)",
+            "example": "GB, DE, CN, US, MX"
+        },
+        "time": {
+            "type": "INT",
+            "description": "Milliseconds after visit_start_time when this hit was registered",
+            "example": "34580"
+        },
+        "entrance": {
+            "type": "INT",
+            "description": "1 if this was the first pageview/screenview hit of a session; else 0",
+            "example": "0 or 1"
+        },
+        "exit": {
+            "type": "INT",
+            "description": "1 if this was the last pageview/screenview hit of a session; else 0",
+            "example": "0 or 1"
+        },
+        "interaction": {
+            "type": "INT",
+            "description": "1 if this was an interaction; 0 if it was non-interaction",
+            "example": "0 or 1"
+        },
+        "referrer": {
+            "type": "VARCHAR(255)",
+            "description": "Referring page if session has a goal or transaction; blank if same domain",
+            "example": "https://www.jaguar.it/build-yours/index.html"
+        },
+        "page_path": {
+            "type": "VARCHAR(255)",
+            "description": "URL path of the page (event_params=page_location)",
+            "example": "www.jaguar.ie/jaguar-range-i-pace"
+        },
+        "host_name": {
+            "type": "VARCHAR(255)",
+            "description": "Hostname of the URL (page_view event)",
+            "example": "www.jaguar.ie"
+        },
+        "page_title": {
+            "type": "VARCHAR(255)",
+            "description": "Page title (page_view event)",
+            "example": "Jaguar I-PACE | Our First All-Electric Car | Jaguar Ireland"
+        },
+        "event_name": {
+            "type": "VARCHAR(255)",
+            "description": "Name of the Event taken from parameter",
+            "example": "eng_score2.0_increment, ab_tasty_test_data_event"
+        },
+        "event_category": {
+            "type": "VARCHAR(255)",
+            "description": "Event Category (key = `event_category`)",
+            "example": "abTastyTestData, intscore3.0 Increment, gallery :: CTA"
+        },
+        "event_action": {
+            "type": "VARCHAR(255)",
+            "description": "Event Action (key = `event_action`)",
+            "example": "BUILD YOUR OWN, loaded, ssoMenuLoad"
+        },
+        "event_label": {
+            "type": "VARCHAR(255)",
+            "description": "Event Label (key = `event_label`)",
+            "example": "BUILD YOUR OWN, VEHICLES (VEHICLES tab)"
+        },
+        "event_value": {
+            "type": "INT",
+            "description": "Event Value (key = `event_value`)",
+            "example": "42"
+        },
+        "geo_continent": {
+            "type": "VARCHAR(255)",
+            "description": "Continent from which events were reported (IP-based)",
+            "example": "Americas, Africa"
+        },
+        "geo_country": {
+            "type": "VARCHAR(255)",
+            "description": "Country from which events were reported (IP-based)",
+            "example": "Spain, China, United States"
+            },
+            "geo_city": {
+                "type": "VARCHAR(255)",
+                "description": "City from which events were reported (IP-based)",
+                "example": "Macclesfield, Floridablanca"
+            },
+            "geo_metro": {
+                "type": "VARCHAR(255)",
+                "description": "Metro from which events were reported (IP-based)",
+                "example": "New York, NY; Memphis TN"
+            },
+            "geo_region": {
+                "type": "VARCHAR(255)",
+                "description": "Region from which events were reported (IP-based)",
+                "example": "Washington, Ohio"
+            },
+            "content_group_1": {
+                "type": "VARCHAR(255)",
+                "description": "Content group 1 = Nameplate / Application",
+                "example": "Configurator: x540, Configurator: xf"
+            },
+            "content_group_2": {
+                "type": "VARCHAR(255)",
+                "description": "Content group 2 = Nameplate",
+                "example": "x540, x590, l550"
+            },
+            "content_group_3": {
+                "type": "VARCHAR(255)",
+                "description": "Content group 3 = Application : Nameplate :: Bodystyle",
+                "example": "Website: (not set) :: A_SUV, Configurator: xe :: A-XEBS"
+            },
+            "content_group_4": {
+                "type": "VARCHAR(255)",
+                "description": "Content group 4 = Site Section",
+                "example": "JDX:Reviews:Jaguar F-Pace Reviews, JDX:Ownership:Other"
+            },
+            "content_group_5": {
+                "type": "VARCHAR(255)",
+                "description": "Content group 5 = True Application + Nameplate",
+                "example": "finance calculator: x540, gbb configurator: xj"
+            },
+            "previous_content_group_1": {
+                "type": "VARCHAR(255)",
+                "description": "Previous content group 1 = Nameplate / Application (key = `content_group_1`)",
+                "example": "Configurator: x540, x540"
+            },
+            "previous_content_group_2": {
+                "type": "VARCHAR(255)",
+                "description": "Previous content group 2 = Nameplate (key = `content_group_2`)",
+                "example": "x590, f-pace"
+            },
+            "previous_content_group_3": {
+                "type": "VARCHAR(255)",
+                "description": "Previous content group 3 = Application : Nameplate :: Bodystyle (key = `content_group_3`)",
+                "example": "Configurator: xj :: A-X351LWB"
+            },
+            "previous_content_group_4": {
+                "type": "VARCHAR(255)",
+                "description": "Previous content group 4 = Site Section (key = `content_group_4`)",
+                "example": "JDX:Forms:Test Drive Request Form"
+            },
+            "previous_content_group_5": {
+                "type": "VARCHAR(255)",
+                "description": "Previous content group 5 = True Application + Nameplate (key = `content_group_5`)",
+                "example": "gbb configurator: f-type"
+            },
+            "event_start_date": {
+                "type": "DATE",
+                "description": "Date of event (Event start date) in YYYY-MM-DD (UTC)",
+                "example": "2020-07-25"
+            }
+            }
+        },
+
+        "GA4_visitor_day": {
+          "description": "One row for each visitor and each day, providing visitor level attributes",
+          "partition_by": "visit_start_date",
+          "cluster_by": "none",
+          "columns": {
+            "visitor_day_id": {
+              "type": "VARCHAR(255)",
+              "primary_key": true,
+              "description": "Unique identifier for a visitor and day"
+            },
+            "visitor_id": {
+              "type": "VARCHAR(255)",
+              "description": "Unique identifier for a visitor"
+            },
+            "day_id": {
+              "type": "INT",
+              "description": "Date of the visit(s). Expressed as an integer in YYYYMMDD format (UTC time zone)"
+            },
+            "visit_start_date": {
+              "type": "DATE",
+              "description": "Date of the visit(s). Expressed as YYYY-MM-DD date format (UTC time zone)"
+            },
+            "brand": {
+              "type": "VARCHAR(255)",
+              "description": "JLR Brand from the visitor`s final session on this day"
+            },
+            "market_code": {
+              "type": "VARCHAR(255)",
+              "description": "2-character market-code (= FK to GA4_lookup_market) from the visitor`s final session on this day"
+            },
+            "GA_client_id": {
+              "type": "VARCHAR(255)",
+              "description": "Unique identifier for a visitor"
+            },
+            "total_sessions": {
+              "type": "INT",
+              "description": "Total number of sessions for the visitor on this day"
+            },
+            "total_hits": {
+              "type": "INT",
+              "description": "Total number of hits from all of the visitor`s sessions on this day"
+            },
+            "total_page_views": {
+              "type": "INT",
+              "description": "Total number of page views from all of the visitor`s sessions on this day"
+            },
+            "time_on_site_seconds": {
+              "type": "INT",
+              "description": "Total time of all of the visitor`s sessions on this day, expressed in seconds"
+            },
+            "engaged_visitor": {
+              "type": "INT",
+              "description": "Flag to indicate whether the visitor was engaged on this day (0 or 1)"
+            },
+            "enquiry_visitor": {
+              "type": "INT",
+              "description": "Flag to indicate whether the visitor had an enquiry hit on this day (0 or 1)"
+            },
+            "event_start_date": {
+              "type": "DATE",
+              "description": "Date of event (Event start date). Expressed as YYYY-MM-DD (UTC time zone)"
+            }
+          }
+        },
+
+      "GA4_agg_visitor_month_interaction": {
+        "description": "One row for each brand, market, nameplate, device and month, providing visitor counts at the visitor-month level (for each nameplate). Day level, week level versions are also available",
+        "partition_by": "month_id_date",
+        "cluster_by": "none",
+        "columns": {
+            "brand": {
+                "type": "VARCHAR(255)",
+                "primary_key": true,
+                "description": "JLR Brand from the visitor`s final session from this month (e.g. Jaguar, Land Rover)"
+            },
+            "market_code": {
+                "type": "VARCHAR(255)",
+                "primary_key": true,
+                "description": "2-character market-code from the visitor`s final session (e.g. GB, DE, CN, US, MX)"
+            },
+            "market_name": {
+                "type": "VARCHAR(255)",
+                "description": "Market name (e.g. Germany, China, Canada)"
+            },
+            "region": {
+                "type": "VARCHAR(255)",
+                "description": "Region (e.g. Mobile, Tablet, Desktop)"
+            },
+            "month_id": {
+                "type": "INT",
+                "description": "Month of the date in YYYYMM format (e.g. 202007 for July 2020)"
+            },
+            "month_id_date": {
+                "type": "DATE",
+                "primary_key": true,
+                "description": "Date for the 1st of the month in YYYY-MM-DD format (UTC). (e.g. 2020-07-01)"
+            },
+            "completed_month": {
+                "type": "INT",
+                "description": "Indicates if the month is completed (0 or 1)"
+            },
+            "interaction_id": {
+                "type": "INT",
+                "primary_key": true,
+                "description": "Unique identifier for an interaction type (e.g. 1, 2, 3)"
+            },
+            "interaction_desc": {
+                "type": "VARCHAR(255)",
+                "description": "Description for the interaction type (e.g. `Test drive request`, `Brochure download`)"
+            },
+            "total_visitors": {
+                "type": "INT",
+                "description": "Total number of engaged visitors for this interaction (e.g. 1, 2, 3)"
+            }
+        }
+    },
+
+        "GA4_hit_interaction_nameplate": {
+          "description": "One row for each interaction hit, per nameplate, in each session. Contains all hits that are classified as interactions (identified by the interaction_id from GA4_lookup_interaction). Shows which nameplate the hit was for (even if it wasn`t nameplate specific, which will have nameplate_code = `NONE_J` or `NONE_LR`). Note: It`s possible for a single hit to fire more than one interaction (e.g. a form submit that triggers multiple actions). It`s also possible for a single hit to fire an interaction for more than one nameplate. This is why the primary key is a combination of the hit ID, interaction ID, and nameplate code; these 3 ID columns combined provide the unique key for this table.",
+          "columns": {
+            "hit_interaction_nameplate_id": {
+              "type": "VARCHAR(255)",
+              "primary_key": true,
+              "description": "Unique ID for this table; unique identifier for a hit-interaction-nameplate.",
+              "example_value": "hit_id + `-` + interaction_id + `-` + nameplate_id"
+            },
+            "hit_id": {
+              "type": "VARCHAR(255)",
+              "description": "Unique identifier for a hit.",
+              "example_value": "user_pseudo_id + `-` + ga_session_id + `-` + hit_number"
+            },
+            "session_id": {
+              "type": "VARCHAR(255)",
+              "description": "Unique identifier for a session.",
+              "example_value": "user_pseudo_id + `-` + ga_session_id"
+            },
+            "hit_number": {
+              "type": "INT",
+              "description": "The sequenced hit number. For the first hit of each session, this is set to 1.",
+              "example_value": "1, 2, 3"
+            },
+            "interaction_id": {
+              "type": "INT",
+              "description": "Interaction ID (unique identifier for an interaction type).",
+              "example_value": "1, 2, 3"
+            },
+            "nameplate_code": {
+              "type": "VARCHAR(255)",
+              "description": "Nameplate Code (JLR Model Code).",
+              "example_value": "X150, X152"
+            },
+            "visitor_id": {
+              "type": "VARCHAR(255)",
+              "description": "Unique identifier for a visitor.",
+              "example_value": "496836.1668366544"
+            },
+            "visit_start_time": {
+              "type": "INT",
+              "description": "Visit start time (Session start time). Expressed as POSIX time (seconds since 1st Jan 1970).",
+              "example_value": "1668356175780726"
+            },
+            "visit_start_date": {
+              "type": "DATE",
+              "description": "Visit start date (Session start date). Expressed as YYYY-MM-DD.",
+              "example_value": "2020-07-25"
+            },
+            "property_id": {
+              "type": "VARCHAR(255)",
+              "description": "Identifier for the Google Analytics 4 Property ID (GA4P).",
+              "example_value": "GA4P1, GA4P2"
+            },
+            "brand": {
+              "type": "VARCHAR(255)",
+              "description": "JLR Brand.",
+              "example_value": "Jaguar, Land Rover"
+            },
+            "market_code": {
+              "type": "VARCHAR(255)",
+              "description": "2-character market-code relating to the hit = FK to GA4_lookup_market.",
+              "example_value": "GB, DE, CN, US, MX"
+            },
+            "event_start_date": {
+              "type": "DATE",
+              "description": "Date of event (Event start date). Expressed as YYYY-MM-DD (UTC time zone).",
+              "example_value": "2020-07-25"
+            }
+          }
+        }   
+    },
+    "metrics": {
+    "enquiried_visitors": {
+      "description": "Count of unique visitors who submitted an enquiry",
+      "calculation": "COUNT(DISTINCT CASE WHEN li.enquiry_flag = 1 THEN hit.visitor_id END)",
+      "example": "SELECT market_code,\n       COUNT(DISTINCT CASE WHEN li.enquiry_flag = 1 THEN hit.visitor_id END) AS enquiried_visitors\nFROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit\nJOIN `jlr-dl-dxa.PRD_GA4.GA4_hit_interaction_nameplate` hin ON hit.hit_id = hin.hit_id\n JOIN `jlr-dl-dxa.PRD_GA4.GA4_lookup_interaction` li ON hin.interaction_id = li.interaction_id \nGROUP BY market_code"
+    },
+    "enagged_visitors": {
+      "description": "Count of unique visitors who submitted triggered and engagement",
+      "calculation": "COUNT(DISTINCT CASE WHEN li.engagement_flag = 1 THEN hit.visitor_id END)",
+      "example": "SELECT market_code,\n       COUNT(DISTINCT CASE WHEN li.engagement_flag = 1 THEN hit.visitor_id END) AS engaged_visitors\nFROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit\nJOIN `jlr-dl-dxa.PRD_GA4.GA4_hit_interaction_nameplate` hin ON hit.hit_id = hin.hit_id\n JOIN `jlr-dl-dxa.PRD_GA4.GA4_lookup_interaction` li ON hin.interaction_id = li.interaction_id \n  GROUP BY market_code"
+    },
+    "uev_enq": {
+        "description": "Ratio of unique enquiry visitors to engaged visitors (UEV-ENQ) as a percentage (eg. 2.5%)",
+        "calculation": "(COUNT(DISTINCT CASE WHEN li.enquiry_flag = 1 THEN hit.visitor_id END)) / (COUNT(DISTINCT CASE WHEN li.engagement_flag = 1 THEN hit.visitor_id END)) * 100",
+        "example": "SELECT market_code,\n       (COUNT(DISTINCT CASE WHEN li.enquiry_flag = 1 THEN hit.visitor_id END)) / (COUNT(DISTINCT CASE WHEN li.engagement_flag = 1 THEN hit.visitor_id END)) AS uev_enq\nFROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit\nJOIN `jlr-dl-dxa.PRD_GA4.GA4_hit_interaction_nameplate` hin ON hit.hit_id = hin.hit_id\nJOIN `jlr-dl-dxa.PRD_GA4.GA4_lookup_interaction` li ON hin.interaction_id = li.interaction_id\nGROUP BY market_code"
+      }
+      ,
+    "config_start": {
+      "description": "Count of configuration starts",
+      "calculation": "COUNT(DISTINCT CASE WHEN hin.interaction_id = 5 THEN hit.visitor_id END)",
+      "example": "SELECT COUNT(DISTINCT CASE WHEN hin.interaction_id = 5 THEN hit.visitor_id END) AS config_start FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit JOIN GA4_hit_interaction_nameplate hin ON hit.hit_id = li.hit_id"
+    },
+    "config_completions": {
+      "description": "Count of configuration completions. ",
+      "calculation": "COUNT(DISTINCT CASE WHEN hin.interaction_id = 11 THEN hit.visitor_id END)",
+      "example": "SELECT COUNT(DISTINCT CASE WHEN hin.interaction_id = 11 THEN hit.visitor_id END) AS config_completions FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit JOIN `jlr-dl-dxa.PRD_GA4.GA4_hit_interaction_nameplate` hin ON hit.hit_id = li.hit_id"
+    }
+
+  },
+    "relationships": [
+        {
+        "from": "GA4_session.session_id",
+        "to": "GA4_hit.session_id",
+        "type": "one-to-many",
+        "description": "One session can have many hits"
+        },
+        {
+        "from": "GA4_hit.hit_id",
+        "to": "GA4_hit_interaction_nameplate.hit_id",
+        "type": "one-to-many",
+        "description": "One hit can have multiple interaction-nameplate combinations"
+        },
+        {
+        "from": "GA4_session.session_id",
+        "to": "GA4_hit_interaction_nameplate.session_id",
+        "type": "one-to-many",
+        "description": "One session can have many interaction-nameplate hits"
+        },
+        {
+        "from": "GA4_session (visitor_id, visit_start_date)",
+        "to": "GA4_visitor_day (visitor_id, visit_start_date)",
+        "type": "many-to-one",
+        "description": "Each GA4_visitor_day row aggregates one visitor`s sessions on a specific day"
+        },
+        {
+        "from": "GA4_hit_interaction_nameplate (brand, market_code, event_start_date, interaction_id)",
+        "to": "GA4_agg_visitor_month_interaction (brand, market_code, month_id_date, interaction_id)",
+        "type": "many-to-one",
+        "description": "GA4_agg_visitor_month_interaction aggregates hits that occurred in that brand/market/month for the same interaction ID"
+        }
+    ]
+  }

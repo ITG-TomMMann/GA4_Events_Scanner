@@ -1,76 +1,65 @@
+import json
 import os
 import logging
-# Change these imports
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings  # Note: requires pip install langchain-openai
-from langchain.docstore.document import Document
-from .schema_inference import infer_schema  # Adjust import if needed
-
-logging.basicConfig(level=logging.DEBUG)
+from typing import List, Dict
 
 class TableSelector:
-    def __init__(self, schema_sql_path: str, vector_store_path: str = "rag/table_store.faiss"):
-        self.schema_sql_path = schema_sql_path
-        self.vector_store_path = vector_store_path
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable not set")
-        self.embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-        self.vector_store = self.initialize_vector_store()
-
-    def initialize_vector_store(self):
+    def __init__(self, schema_json_path: str):
+        self.schema_json_path = schema_json_path
+        self.schema = self._load_schema()
+        
+    def _load_schema(self) -> Dict:
+        """Load the JSON schema file"""
         try:
-            if os.path.exists(self.vector_store_path):
-                # If the FAISS file already exists, load it.
-                # Only do this if you trust your pickle file source!
-                vector_store = FAISS.load_local(
-                    self.vector_store_path,
-                    self.embeddings,
-                    allow_dangerous_deserialization=True
-                )
-                logging.info("FAISS table index loaded.")
+            if os.path.exists(self.schema_json_path):
+                with open(self.schema_json_path, 'r') as f:
+                    return json.load(f)
             else:
-                # If no FAISS file, create a new index from your schema.
-                schema = self.parse_schema()
-                if not schema:
-                    raise ValueError("Schema is empty. Check your schema file and inference logic.")
+                logging.warning(f"Schema file not found: {self.schema_json_path}")
+                return {}
+        except Exception as e:
+            logging.error(f"Error loading schema: {e}")
+            return {}
+            
+    def select_relevant_tables(self, query: str) -> List[str]:
+        """Select tables that are relevant to the query"""
+        if not query:
+            # Return all tables if no query provided
+            if "tables" in self.schema:
+                return list(self.schema["tables"].keys())
+            return list(self.schema.keys())
+            
+        # Extract tables based on keywords in the query
+        tables = []
+        
+        # Get all available tables
+        if "tables" in self.schema:
+            available_tables = self.schema["tables"]
+        else:
+            available_tables = self.schema
+            
+        # Simple keyword matching (can be enhanced with NLP/embeddings)
+        for table_name, table_info in available_tables.items():
+            # Check if table name appears in query
+            if table_name.lower() in query.lower():
+                tables.append(table_name)
                 
-                documents = [Document(page_content=table_name) for table_name in schema.keys()]
-                vector_store = FAISS.from_documents(documents, self.embeddings)
-                vector_store.save_local(self.vector_store_path)
-                logging.info("FAISS table index created and saved.")
-            return vector_store
-        except Exception as e:
-            logging.error(f"Error initializing table vector store: {e}")
-            raise
-
-    def parse_schema(self):
-        with open(self.schema_sql_path, 'r') as f:
-            schema_sql = f.read()
-            logging.debug("SQL SCHEMA:")
-            logging.debug(schema_sql)
-        schema = infer_schema(schema_sql)
-        return schema
-
-    def select_relevant_tables(self, query: str, top_n: int = 3) -> list:
-        try:
-            query_embedding = self.embeddings.embed_query(query)
-            docs = self.vector_store.similarity_search_by_vector(query_embedding, k=top_n)
-            selected_tables = [doc.page_content for doc in docs]
-            logging.info(f"Selected tables: {selected_tables}")
-            return selected_tables
-        except Exception as e:
-            logging.error(f"Error selecting tables: {e}")
-            raise
-
-if __name__ == "__main__":
-    # Update this path to the location of your schema.sql file.
-    
-    schema_path = "path/to/schema.sql"
-    try:
-        selector = TableSelector(schema_sql_path=schema_path)
-        # Example usage
-        tables = selector.select_relevant_tables("example query", top_n=3)
-        print("Selected tables:", tables)
-    except Exception as e:
-        logging.error("Error in main execution: %s", e)
+            # Check if table description appears in query
+            if "description" in table_info and table_info["description"].lower() in query.lower():
+                tables.append(table_name)
+                
+            # Check if any column name appears in query
+            if "columns" in table_info:
+                for column_name in table_info["columns"].keys():
+                    if column_name.lower() in query.lower():
+                        tables.append(table_name)
+                        break
+        
+        # Ensure we're returning unique tables
+        unique_tables = list(set(tables))
+        
+        # If no tables matched, return all tables
+        if not unique_tables:
+            return list(available_tables.keys())
+            
+        return unique_tables

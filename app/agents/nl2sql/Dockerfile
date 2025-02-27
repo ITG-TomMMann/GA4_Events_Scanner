@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set working directory
-WORKDIR /app/nl2sql
+WORKDIR /app/agents/nl2sql
 
 # Install dependencies
 COPY requirements.txt .
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "source.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "source.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
