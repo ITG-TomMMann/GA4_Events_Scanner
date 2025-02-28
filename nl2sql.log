@@ -2931,3 +2931,32 @@ ORDER BY ds.device_count DESC;
 ```
 
 This query first calculates the total number of sessions for the specified brands in the UK market. Then, it calculates the number of sessions for each device category. Finally, it calculates the percentage of total sessions that each device category represents. The results are ordered by the number of sessions per device in descending order.
+2025-02-27 23:58:04,879 - root - INFO - Loaded schema from JSON file.
+2025-02-27 23:58:06,104 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-02-27 23:58:06,464 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-02-27 23:58:06,489 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-02-27 23:58:06,501 - root - INFO - FAISS index loaded.
+2025-02-27 23:58:07,442 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-27 23:58:07,461 - root - INFO - Retrieved 5 structured examples.
+2025-02-27 23:58:10,150 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 23:58:10,244 - root - INFO - Query classified as: SIMPLE
+2025-02-27 23:58:15,007 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-27 23:58:15,017 - root - INFO - Generated SQL Query: SELECT 
+    STRING 
+FROM 
+    `jlr-dl-dxa.PRD_GA4.GA4_hit` 
+WHERE 
+    page_path LIKE '%range-rover/nameplate/index.html';
+2025-02-28 00:03:18,606 - root - INFO - Loaded schema from JSON file.
+2025-02-28 00:03:19,763 - root - INFO - FAISS index loaded.
+2025-02-28 00:03:20,680 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-02-28 00:03:20,828 - root - INFO - Retrieved 5 structured examples.
+2025-02-28 00:03:22,781 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-28 00:03:22,789 - root - INFO - Query classified as: SIMPLE
+2025-02-28 00:03:27,031 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-28 00:03:27,035 - root - INFO - Generated SQL Query: SELECT 
+    COUNT(DISTINCT visitor_id) AS total_visitors
+FROM 
+    `jlr-dl-dxa.PRD_GA4.GA4_hit`
+WHERE 
+    page_path LIKE '%test/index.html';
