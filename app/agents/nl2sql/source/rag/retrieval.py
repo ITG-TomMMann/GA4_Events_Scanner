@@ -7,11 +7,16 @@ import json
 import logging
 import os
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct relative path to examples.json
+examples_path = os.path.join(current_dir, "..", "examples", "examples.json")
+
 def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
     try:
         # Load few-shot examples from JSON
-        with open(r'C:\Users\ThomasMann\Projects\PageScanner\app\agents\nl2sql\examples\examples.json', 'r') as f:
-            examples = json.load(f) 
+        with open(examples_path, 'r', encoding='utf-8') as f:
+            examples = json.load(f)
 
         # Transform examples into Document instances with 'page_content'
         documents = [
