@@ -7,10 +7,13 @@ import json
 import logging
 import os
 
+# Get the directory of the current file (retrieval.py)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Construct relative path to examples.json
-examples_path = os.path.join(current_dir, "..", "examples", "examples.json")
+# Navigate up two levels to `nl2sql/` and then go into `examples/`
+examples_path = os.path.join(current_dir, "..", "..", "examples", "examples.json")
+examples_path = os.path.abspath(examples_path)
+
 
 def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
     try:
