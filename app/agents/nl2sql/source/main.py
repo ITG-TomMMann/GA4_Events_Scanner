@@ -22,9 +22,17 @@ app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
 
+
+origins = [
+    "https://storage.googleapis.com",  # Google Cloud Storage frontend
+    "http://localhost:4173",  # Local testing (if needed)
+    "https://your-frontend-domain.com",  # Your actual frontend URL (if different)
+]
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with specific origins if needed for production
+    allow_origins=origins,  # Explicitly define origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -66,6 +74,13 @@ class FollowUpRequest(BaseModel):
 
 class ClearMemoryRequest(BaseModel):  # Fix for session_id passing
     session_id: str
+
+from fastapi import Request
+
+@app.options("/{full_path:path}")
+async def preflight_handler(full_path: str, request: Request):
+    return {}
+
 
 ###############################################################################
 # 3. Main Endpoints
