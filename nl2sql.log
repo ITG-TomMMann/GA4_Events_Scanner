@@ -2960,3 +2960,19 @@ FROM
     `jlr-dl-dxa.PRD_GA4.GA4_hit`
 WHERE 
     page_path LIKE '%test/index.html';
+2025-03-03 10:16:11,720 - root - INFO - Loaded schema from JSON file.
+2025-03-03 10:16:15,979 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-03-03 10:16:16,699 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-03-03 10:16:16,750 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-03-03 10:16:16,773 - root - INFO - FAISS index loaded.
+2025-03-03 10:16:17,962 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-03 10:16:18,032 - root - INFO - Retrieved 5 structured examples.
+2025-03-03 10:16:23,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 10:16:23,788 - root - INFO - Query classified as: SIMPLE
+2025-03-03 10:16:31,957 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 10:16:31,968 - root - INFO - Generated SQL Query: SELECT 
+    COUNT(DISTINCT visitor_id) AS total_visitors
+FROM 
+    `jlr-dl-dxa.PRD_GA4.GA4_hit`
+WHERE 
+    page_path LIKE '%range-rover/nameplate/index.html';

@@ -15,7 +15,7 @@ examples_path = os.path.join(current_dir, "..", "..", "examples", "examples.json
 examples_path = os.path.abspath(examples_path)
 
 
-def retrieve_examples(nl_query: str, top_n: int = 5) -> list:
+def retrieve_examples(nl_query: str, top_n: int = 3) -> list:
     try:
         # Load few-shot examples from JSON
         with open(examples_path, 'r', encoding='utf-8') as f:

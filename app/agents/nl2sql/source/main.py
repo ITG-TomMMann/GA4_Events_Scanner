@@ -24,15 +24,17 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 origins = [
-    "https://storage.googleapis.com",  # Google Cloud Storage frontend
-    "http://localhost:4173",  # Local testing (if needed)
-    "https://your-frontend-domain.com",  # Your actual frontend URL (if different)
+    "https://storage.googleapis.com",  # Cloud Storage base
+    "https://storage.googleapis.com/ai-data-analyst-static-site",  # Your frontend
+    "https://*.storage.googleapis.com",  # Wildcard for any subpath
+    "http://localhost:5173",  # Local dev
 ]
+
 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Explicitly define origins
+    allow_origins=["*"],  # Explicitly define origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
