@@ -1,3 +1,6 @@
 event_label,event_action,event_category,button_text
-MANAGE YOUR POLICY :: secondary-link None,https://app.insurance.landrover.co.uk/sign-in,nav: cta linkClicks by class,MANAGE YOUR POLICY
-GET A QUOTE :: cta-content,https://insurance.landrover.co.uk/,nav: cta linkClicks by class,MANAGE YOUR POLICY
+,,,FIND OUT MORE
+https://www.rangerover.com/en-xi/explore/range-rover-chapters/index.html,Woosmap API,Geolocation,FIND OUT MORE
+FIND OUT MORE :: secondary-link None,https://www.rangerover.com/en-xi/explore/range-rover-chapters/range-rover-sport-challenges.html,nav: cta linkClicks by class,FIND OUT MORE
+FIND OUT MORE :: cta-content,https://www.rangerover.com/en-xi/stories/meridian-sound-system.html,nav: cta linkClicks by class,EXPLORE WIMBLEDON
+EXPLORE WIMBLEDON :: cta-content,https://www.landrover.com/sponsorship/wimbledon/index.html,nav: cta linkClicks by class,EXPLORE RANGE ROVER

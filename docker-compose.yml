@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: nl2sql_postgres
+    environment:
+      POSTGRES_USER: nl2sql_user
+      POSTGRES_PASSWORD: nl2sql_password
+      POSTGRES_DB: nl2sql_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nl2sql_user -d nl2sql_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nl2sql_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: nl2sql_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - nl2sql_network
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nl2sql_api
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=nl2sql_db
+      - DB_USER=nl2sql_user
+      - DB_PASSWORD=nl2sql_password
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - nl2sql_network
+    command: uvicorn app.agents.nl2sql.source.main:app --host 0.0.0.0 --reload
+
+volumes:
+  postgres_data:
+
+networks:
+  nl2sql_network:
+    driver: bridge

@@ -1,14 +1,32 @@
 [
   {
-    "event_label": "MANAGE YOUR POLICY :: secondary-link None",
-    "event_action": "https://app.insurance.landrover.co.uk/sign-in",
-    "event_category": "nav: cta linkClicks by class",
-    "button_text": "MANAGE YOUR POLICY"
+    "event_label": "",
+    "event_action": "",
+    "event_category": "",
+    "button_text": "FIND OUT MORE"
   },
   {
-    "event_label": "GET A QUOTE :: cta-content",
-    "event_action": "https://insurance.landrover.co.uk/",
+    "event_label": "https://www.rangerover.com/en-xi/explore/range-rover-chapters/index.html",
+    "event_action": "Woosmap API",
+    "event_category": "Geolocation",
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: secondary-link None",
+    "event_action": "https://www.rangerover.com/en-xi/explore/range-rover-chapters/range-rover-sport-challenges.html",
     "event_category": "nav: cta linkClicks by class",
-    "button_text": "MANAGE YOUR POLICY"
+    "button_text": "FIND OUT MORE"
+  },
+  {
+    "event_label": "FIND OUT MORE :: cta-content",
+    "event_action": "https://www.rangerover.com/en-xi/stories/meridian-sound-system.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "EXPLORE WIMBLEDON"
+  },
+  {
+    "event_label": "EXPLORE WIMBLEDON :: cta-content",
+    "event_action": "https://www.landrover.com/sponsorship/wimbledon/index.html",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "EXPLORE RANGE ROVER"
   }
 ]

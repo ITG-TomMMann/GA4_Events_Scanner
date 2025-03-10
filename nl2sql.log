@@ -2976,3 +2976,104 @@ FROM
     `jlr-dl-dxa.PRD_GA4.GA4_hit`
 WHERE 
     page_path LIKE '%range-rover/nameplate/index.html';
+2025-03-03 19:05:13,685 - root - INFO - Loaded schema from JSON file.
+2025-03-03 19:05:14,886 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-03-03 19:05:15,151 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-03-03 19:05:15,173 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-03-03 19:05:15,184 - root - INFO - FAISS index loaded.
+2025-03-03 19:05:16,397 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-03 19:05:16,432 - root - INFO - Retrieved 3 structured examples.
+2025-03-03 19:05:18,465 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 19:05:18,579 - root - INFO - Query classified as: COMPLEX
+2025-03-03 19:05:38,632 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 19:05:38,638 - root - INFO - Generated Complex SQL Query: ```sql
+-- CTE to filter data for the given conditions
+WITH filtered_data AS (
+    SELECT 
+        s.device_category, 
+        s.channel_grouping, 
+        COUNT(DISTINCT h.visitor_id) AS total_visitors
+    FROM 
+        `jlr-dl-dxa.PRD_GA4.GA4_hit` h 
+    JOIN 
+        `jlr-dl-dxa.PRD_GA4.GA4_session` s 
+    ON 
+        h.session_id = s.session_id
+    WHERE 
+        h.visit_start_date BETWEEN DATE('2025-02-01') AND DATE('2025-02-28') 
+        AND s.visit_start_date BETWEEN DATE('2025-02-01') AND DATE('2025-02-28') 
+        AND h.market_code = 'UK' 
+        AND h.brand = 'Land Rover'
+        AND h.page_path LIKE '%range-rover%'
+    GROUP BY 
+        s.device_category, 
+        s.channel_grouping
+)
+
+-- Main query to get total visitors by device and channel
+SELECT 
+    device_category, 
+    channel_grouping, 
+    SUM(total_visitors) AS total_visitors
+FROM 
+    filtered_data
+GROUP BY 
+    device_category, 
+    channel_grouping;
+```
+
+This query first creates a Common Table Expression (CTE) named `filtered_data` that filters the data for the given conditions (UK market, February 2025, and Land Rover brand page). It then groups the data by device category and channel grouping, and counts the distinct visitor IDs to get the total number of visitors.
+
+The main query then selects from this CTE and groups by device category and channel grouping again, summing up the total visitors for each group. This is done to ensure that the total visitor count is correct even if there are multiple rows for the same device category and channel grouping in the CTE.
+2025-03-03 19:07:15,796 - root - INFO - Loaded schema from JSON file.
+2025-03-03 19:07:16,935 - root - INFO - FAISS index loaded.
+2025-03-03 19:07:17,500 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-03 19:07:17,508 - root - INFO - Retrieved 3 structured examples.
+2025-03-03 19:07:19,167 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 19:07:19,170 - root - INFO - Query classified as: SIMPLE
+2025-03-03 19:07:22,661 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-03 19:07:22,673 - root - INFO - Generated SQL Query: SELECT COUNT(DISTINCT visitor_id) AS total_visitors
+FROM GA4_hit
+WHERE market_code = 'UK'
+  AND page_path LIKE '%nameplate%';
+2025-03-07 16:41:06,831 - root - INFO - Loaded schema from JSON file.
+2025-03-07 16:41:15,223 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-03-07 16:41:16,886 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-03-07 16:41:16,944 - faiss - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-03-07 16:41:17,022 - root - INFO - FAISS index loaded.
+2025-03-07 16:41:21,588 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-03-07 16:41:22,412 - root - INFO - Retrieved 3 structured examples.
+2025-03-07 16:41:34,012 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 16:41:34,100 - root - INFO - Query classified as: COMPLEX
+2025-03-07 16:41:53,883 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 16:41:53,897 - root - INFO - Generated Complex SQL Query: ```sql
+-- CTE for the date range
+WITH date_range AS (
+  SELECT DATE('2024-08-01') AS start_date,
+         DATE('2024-01-31') AS end_date
+),
+
+-- CTE for the interactions
+interactions AS (
+  SELECT hit_id,
+         COUNT(DISTINCT CASE WHEN hin.interaction_id = 5 THEN hit.visitor_id END) AS config_starts,
+         COUNT(DISTINCT CASE WHEN hin.interaction_id IN (1, 2, 3, 4) THEN hit.visitor_id END) AS enquiries,
+         COUNT(DISTINCT CASE WHEN hin.interaction_id IN (6, 7, 8, 9, 10) THEN hit.visitor_id END) AS engagements
+  FROM `jlr-dl-dxa.PRD_GA4.GA4_hit` hit
+  JOIN `jlr-dl-dxa.PRD_GA4.GA4_hit_interaction_nameplate` hin ON hit.hit_id = hin.hit_id
+  WHERE hit.market_code = 'UK'
+  GROUP BY hit_id
+)
+
+-- Main query
+SELECT s.brand,
+       SUM(i.config_starts) AS config_starts,
+       SUM(i.enquiries) AS enquiries,
+       SUM(i.engagements) AS engagements
+FROM `jlr-dl-dxa.PRD_GA4.GA4_session` s
+JOIN interactions i ON s.session_id = i.hit_id
+WHERE s.visit_start_date BETWEEN (SELECT start_date FROM date_range) AND (SELECT end_date FROM date_range)
+GROUP BY s.brand;
+```
+
+This query first creates a Common Table Expression (CTE) for the date range, and another CTE for the interactions. The main query then joins the `GA4_session` table with the `interactions` CTE on `session_id` and `hit_id`, respectively. It filters the data for the specified date range and groups the results by brand. The `SUM` function is used to calculate the total number of config starts, enquiries, and engagements for each brand.
