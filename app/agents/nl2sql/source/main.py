@@ -20,8 +20,11 @@ from .query_agent import generate_sql
 from .utils.prompt_builder import build_prompt
 from .query_classifier import classify_query_complexity
 from .complex_sql_generator import generate_complex_sql
+from .conversation_handler import ConversationHandler
+from .question_classifier import classify_question
 
 app = FastAPI()
+conversation_handler = ConversationHandler()
 
 from fastapi.middleware.cors import CORSMiddleware
 
