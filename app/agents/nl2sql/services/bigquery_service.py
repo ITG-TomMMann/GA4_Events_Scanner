@@ -1,9 +1,16 @@
-import pydata_google_auth
-from google.cloud import bigquery
-import pandas as pd
 import logging
 import os
 import tempfile
+import sys
+import subprocess
+import importlib.util
+
+# Check and install required packages
+
+# Now import required packages
+import pydata_google_auth
+from google.cloud import bigquery
+import pandas as pd
 
 class BigQueryService:
     """Service to interact with Google BigQuery for data analysis."""
@@ -104,7 +111,7 @@ class BigQueryService:
         except Exception as e:
             self.logger.error(f"Error estimating query cost: {e}")
             raise
-
+            
     def execute_query(self, query, max_results=None):
         """
         Execute a BigQuery SQL query.
@@ -202,29 +209,37 @@ class BigQueryService:
         except Exception as e:
             self.logger.error(f"Error getting schema for table {table_id}: {e}")
             raise
+            
+    def list_datasets(self):
+        """
+        List all datasets in the project.
+        
+        Returns:
+            list: List of dataset IDs.
+        """
+        try:
+            datasets = list(self.client.list_datasets())
+            return [dataset.dataset_id for dataset in datasets]
+        except Exception as e:
+            self.logger.error(f"Error listing datasets: {e}")
+            raise
+            
+    def list_tables(self, dataset_id):
+        """
+        List all tables in a dataset.
+        
+        Args:
+            dataset_id (str): Dataset ID.
+            
+        Returns:
+            list: List of table IDs.
+        """
+        try:
+            tables = list(self.client.list_tables(dataset_id))
+            return [table.table_id for table in tables]
+        except Exception as e:
+            self.logger.error(f"Error listing tables in dataset {dataset_id}: {e}")
+            raise
 
-# Example usage
-if __name__ == "__main__":
-    bq_service = BigQueryService()
-    
-    # Example query
-    query = """
-        SELECT * 
-        FROM `jlr-dl-dxa.PRD_GA4.GA4_lookup_market`
-        LIMIT 10
-    """
-    
-    try:
-        # Execute query
-        results = bq_service.execute_query(query)
-        
-        # Print results
-        print(f"Query returned {len(results)} rows.")
-        print(results.head())
-        
-        # Save to CSV
-        csv_path = bq_service.save_to_csv(results)
-        print(f"Results saved to {csv_path}")
-        
-    except Exception as e:
-        print(f"Error: {e}")
+# Create a default BigQuery service instance
+bq_service = BigQueryService()
