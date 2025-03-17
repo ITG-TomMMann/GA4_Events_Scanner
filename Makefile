@@ -1,4 +1,4 @@
-.PHONY: setup build start stop clean logs db-shell db-backup
+.PHONY: setup build build-no-cache start start-with-admin dev-build dev-start stop clean logs db-shell db-backup db-restore test help
 
 # Default environment
 ENV_FILE ?= .env
@@ -17,16 +17,38 @@ setup:
 	cp -n postgres/init/02-test-data.sql postgres/init/ 2>/dev/null || true
 	@echo "Setup complete!"
 
-# Build containers
+# Development build (faster for development)
+dev-build:
+	@echo "Building minimal Docker containers for development..."
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
+
+# Production build
 build:
 	@echo "Building Docker containers..."
-	docker-compose build
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
 
-# Start all services
+# Force rebuild with no cache
+build-no-cache:
+	@echo "Building Docker containers without cache..."
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build --no-cache
+
+# Start all services without pgAdmin
 start:
-	@echo "Starting all services..."
+	@echo "Starting essential services..."
 	docker-compose up -d
+	@echo "Services started! FastAPI available at http://localhost:8000"
+
+# Start all services with pgAdmin
+start-with-admin:
+	@echo "Starting all services including pgAdmin..."
+	docker-compose --profile admin up -d
 	@echo "Services started! FastAPI available at http://localhost:8000, pgAdmin at http://localhost:5050"
+
+# Development start (with file watching)
+dev-start:
+	@echo "Starting development environment..."
+	docker-compose up -d
+	@echo "Development environment started! FastAPI available at http://localhost:8000 with hot reload"
 
 # Start all services in foreground (with logs)
 run:
@@ -80,20 +102,30 @@ db-restore:
 test:
 	docker exec nl2sql_api pytest
 
+# Prune Docker system
+prune:
+	@echo "Cleaning up unused Docker resources..."
+	docker system prune -f
+
 # Show help
 help:
 	@echo "Available commands:"
-	@echo "  make setup         - Create necessary directories and files"
-	@echo "  make build         - Build Docker containers"
-	@echo "  make start         - Start all services in detached mode"
-	@echo "  make run           - Start all services in foreground (with logs)"
-	@echo "  make stop          - Stop all services"
-	@echo "  make clean         - Stop services and remove volumes"
-	@echo "  make logs          - View logs for all services"
-	@echo "  make api-logs      - View FastAPI logs"
-	@echo "  make db-logs       - View PostgreSQL logs"
-	@echo "  make db-shell      - Open PostgreSQL shell"
-	@echo "  make db-backup     - Backup the database"
+	@echo "  make setup              - Create necessary directories and files"
+	@echo "  make dev-build          - Build Docker containers for development (faster)"
+	@echo "  make build              - Build Docker containers for production"
+	@echo "  make build-no-cache     - Build Docker containers without using cache"
+	@echo "  make start              - Start essential services in detached mode"
+	@echo "  make start-with-admin   - Start all services including pgAdmin"
+	@echo "  make dev-start          - Start development environment with hot reload"
+	@echo "  make run                - Start all services in foreground (with logs)"
+	@echo "  make stop               - Stop all services"
+	@echo "  make clean              - Stop services and remove volumes"
+	@echo "  make logs               - View logs for all services"
+	@echo "  make api-logs           - View FastAPI logs"
+	@echo "  make db-logs            - View PostgreSQL logs"
+	@echo "  make db-shell           - Open PostgreSQL shell"
+	@echo "  make db-backup          - Backup the database"
 	@echo "  make db-restore FILE=backups/file.sql - Restore the database from backup"
-	@echo "  make test          - Run tests"
-	@echo "  make help          - Show this help message"
+	@echo "  make test               - Run tests"
+	@echo "  make prune              - Clean up unused Docker resources"
+	@echo "  make help               - Show this help message"
