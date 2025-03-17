@@ -9,17 +9,12 @@ from fastapi.responses import JSONResponse
 import time
 from dotenv import load_dotenv
 import sys
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
-
-# Import routers
-from app.agents.doc_rag.api.routes import router as doc_rag_router
-from app.agents.nl2sql.routers.ga4_router import router as ga4_router
-from app.agents.nl2sql.routers.nl2sql_router import router as nl2sql_router
-
-# Import services
-from app.agents.doc_rag.config.settings import get_settings
-from app.agents.doc_rag.utils.doc_embeddings import embedding_service
-from app.agents.doc_rag.utils.gcp import gcp_service
+from  app.agents.doc_rag.api.routes import router
+from  app.agents.doc_rag.config.settings import get_settings
+from  app.agents.doc_rag.utils.doc_embeddings import embedding_service
+from  app.agents.doc_rag.utils.gcp import gcp_service
 
 # Load environment variables
 load_dotenv()
@@ -42,8 +37,8 @@ app = FastAPI(
     title=settings.API_TITLE,
     description=settings.API_DESCRIPTION,
     version=settings.API_VERSION,
-    docs_url="/docs",
-    redoc_url="/redoc"
+    docs_url="/docs" ,
+    redoc_url="/redoc" 
 )
 
 # Add CORS middleware
@@ -84,20 +79,18 @@ def startup_event():
         # Initialize embedding service
         embedding_service.initialize()
         logger.info("Embedding service initialized")
-       
+        
         # Initialize GCP service
         gcp_service.initialize()
         logger.info("GCP service initialized")
-       
+        
         logger.info("All services initialized successfully")
     except Exception as e:
         logger.error(f"Error initializing services: {str(e)}", exc_info=True)
         # We don't raise here to allow the app to start even if some services fail
 
-# Include API routers
-app.include_router(doc_rag_router, prefix="/api")
-app.include_router(ga4_router, prefix="/api")
-app.include_router(nl2sql_router, prefix="/api")
+# Include API routes
+app.include_router(router, prefix="/api")
 
 # Root endpoint
 @app.get("/")
@@ -106,21 +99,16 @@ async def root():
     return {
         "name": settings.API_TITLE,
         "version": settings.API_VERSION,
-        "status": "online",
-        "available_endpoints": [
-            "/api/query",
-            "/api/nl2sql/query",
-            "/api/ga4"  # Add any other important endpoints here
-        ]
+        "status": "online"
     }
 
 # Main entrypoint for running with uvicorn
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", "8000"))
-   
+    
     uvicorn.run(
-        "app.agents.doc_rag.main:app",  # Use the full path to the module
+        "app:app",
         host="0.0.0.0",
         port=port,
         reload=settings.DEBUG
