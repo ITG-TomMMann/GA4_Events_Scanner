@@ -37,3 +37,6 @@ ENV/
 .DS_Store
 Thumbs.db
 .aider*
+
+
+credentials.json

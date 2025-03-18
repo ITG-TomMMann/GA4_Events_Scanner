@@ -1,0 +1,14 @@
+[
+  {
+    "event_label": "KONFIGURATOR",
+    "event_action": "cta click",
+    "event_category": "immersive hero",
+    "button_text": "ZUR NEUFAHRZEUGSUCHE"
+  },
+  {
+    "event_label": "ZUR NEUFAHRZEUGSUCHE :: cta-content",
+    "event_action": "https://fahrzeugsuche.landrover.de/search/%23/?model%255B0%255D=range%2520rover%2520sport",
+    "event_category": "nav: cta linkClicks by class",
+    "button_text": "ZUR NEUFAHRZEUGSUCHE"
+  }
+]
