@@ -1,33 +1,17 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Dict, Any, List, Optional, Union
-
-from app.agents.nl2sql.services.ga4_service import process_ga4_request
-
-# Update your FastAPI models and endpoint
-
-from pydantic import BaseModel
-from fastapi import APIRouter, HTTPException
 import asyncio
-
-# Update or verify your request model has the correct field
+from concurrent.futures import ThreadPoolExecutor
+from app.agents.nl2sql.services.ga4_service import process_ga4_request
+# Define the request and response models
 class GA4RequestModel(BaseModel):
-    url: str  # Make sure this matches what your React app is sending
+    url: str  # This should match what the frontend sends
 
 class GA4ResponseModel(BaseModel):
     response: dict  # This will contain the GA4 events or error message
 
-# Assuming you have an implementation that uses the GA4EventCollector from the Streamlit code
-async def process_ga4_request(url: str) -> dict:
-    """Process a URL to extract GA4 events using the GA4EventCollector"""
-    try:
-        collector = GA4EventCollector()
-        events = collector.collect_events_from_url(url, wait_time=5, section_selector="body", target_text=None)
-        parsed_ga4_events = [parse_ga4_event(event) for event in collector.ga4_events]
-        collector.close()
-        return {"events": parsed_ga4_events}
-    except Exception as e:
-        return {"error": str(e)}
+# Create a thread pool executor for running the Selenium-based code
+executor = ThreadPoolExecutor(max_workers=2)  # Limit concurrent Selenium browsers
 
 router = APIRouter()
 
@@ -43,10 +27,26 @@ async def ga4_endpoint(request: GA4RequestModel):
         GA4ResponseModel: Response containing parsed GA4 events or error message
     """
     try:
-        # Add a timeout to prevent the request from hanging indefinitely
-        result = await asyncio.wait_for(process_ga4_request(request.url), timeout=60)
-        return GA4ResponseModel(response=result)
+        # Run the Selenium code in a separate thread to not block the event loop
+        loop = asyncio.get_event_loop()
+        # Execute the function with a timeout
+        result = await asyncio.wait_for(
+            loop.run_in_executor(executor, process_ga4_request, request.url),
+            timeout=90  # 90 seconds timeout
+        )
+        
+        # Process the result based on the format returned by process_ga4_request
+        if isinstance(result, list):
+            # If we got a list of events, format it for the response
+            return GA4ResponseModel(response={"events": result})
+        elif isinstance(result, dict):
+            # If we got a dict (probably an error), return it as is
+            return GA4ResponseModel(response=result)
+        else:
+            # Unexpected result format
+            return GA4ResponseModel(response={"error": "Unexpected response format from processor"})
+            
     except asyncio.TimeoutError:
-        return GA4ResponseModel(response={"error": "Request timed out after 60 seconds"})
+        return GA4ResponseModel(response={"error": "Request timed out. GA4 collection can take time on complex pages."})
     except Exception as e:
         return GA4ResponseModel(response={"error": f"An unexpected error occurred: {str(e)}"})
