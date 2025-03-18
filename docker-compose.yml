@@ -20,7 +20,6 @@ services:
     networks:
       - nl2sql_network
 
-  # Only include pgAdmin when needed
   pgadmin:
     image: dpage/pgadmin4
     container_name: nl2sql_pgadmin
@@ -37,9 +36,12 @@ services:
     profiles: ["admin"]
 
   fastapi:
+    image: ${PROJECT_NAME:-nl2sql}:latest
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - TARGET=${TARGET:-dev}
     container_name: nl2sql_api
     environment:
       - DB_HOST=postgres
@@ -51,17 +53,17 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Only mount the app directory for development
+      # Mount app directory for development (hot reload)
       - ./app:/app/app
     depends_on:
       postgres:
         condition: service_healthy
     networks:
       - nl2sql_network
-    command: uvicorn app.agents.nl2sql.source.main:app --host 0.0.0.0 --reload
 
 volumes:
   postgres_data:
+
 networks:
   nl2sql_network:
     driver: bridge
