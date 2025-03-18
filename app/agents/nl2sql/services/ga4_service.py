@@ -3,13 +3,17 @@ import time
 from typing import List, Dict
 from urllib.parse import urlparse, parse_qs
 import pandas as pd
+import os
 from selenium import webdriver
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
 
 # ------------------------------------------------------------------
 # Helper Functions
@@ -72,11 +76,32 @@ def parse_ga4_event(event: Dict) -> Dict:
 
 class GA4EventCollector:
     def __init__(self):
+        # Configure Chrome options for headless operation in Ubuntu
         chrome_options = Options()
-        chrome_options.add_argument('--headless')  # Run in headless mode.
-        # Enable performance logging.
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')  # Required for running in Docker/Ubuntu
+        chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems
+        chrome_options.add_argument('--disable-gpu')  # Needed for some versions
+        chrome_options.add_argument('--window-size=1280,720')  # Set window size to ensure elements are visible
+        
+        # Enable performance logging
         chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-        self.driver = webdriver.Chrome(options=chrome_options)
+        
+        try:
+            # Try to use webdriver-manager to handle driver installation (works both in Windows and Ubuntu)
+            service = Service(ChromeDriverManager().install())
+            self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        except Exception as e:
+            print(f"Error using webdriver-manager: {e}")
+            try:
+                # Fallback to system-installed chromedriver if available (common in Ubuntu)
+                self.driver = webdriver.Chrome(options=chrome_options)
+            except Exception as e2:
+                print(f"Error using system chromedriver: {e2}")
+                # Last resort - try a specific Chrome type for Linux
+                service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        
         self.events = []      # Captured dataLayer events.
         self.ga4_events = []  # Captured raw GA4 network events.
         self.inject_datalayer_collector()
@@ -223,7 +248,7 @@ class GA4EventCollector:
                 time.sleep(3)  # Allow time for events to be sent.
                 if self.wait_for_new_event(initial_dl_count, timeout=5):
                     new_dl = self.get_collected_events()[initial_dl_count:]
-                    print("Captured new dataLayer event(s):", new_dl)
+                    print("Captured new dataLayer event(s)")
                     captured_dl_events.extend(new_dl)
                 else:
                     print("No new dataLayer event detected after click.")
@@ -232,7 +257,7 @@ class GA4EventCollector:
                     # Attach the original GTM Button text to each GA4 event
                     for event in new_ga4:
                         event["button_text"] = button_text
-                    print("Captured new GA4 network event(s):", new_ga4)
+                    print(f"Captured {len(new_ga4)} new GA4 network event(s)")
                     captured_ga4_events.extend(new_ga4)
                 else:
                     print("No new GA4 network requests detected after click.")
@@ -253,8 +278,8 @@ class GA4EventCollector:
             dl_events, ga4_events = self.trigger_target_elements(section_selector, target_text=target_text)
             self.events.extend(dl_events)
             self.ga4_events.extend(ga4_events)
-            print(f"DataLayer events collected: {self.events}")
-            print(f"GA4 events collected: {self.ga4_events}")
+            print(f"DataLayer events collected: {len(self.events)}")
+            print(f"GA4 events collected: {len(self.ga4_events)}")
             return {"dataLayer": self.events, "ga4": self.ga4_events}
         except Exception as e:
             print(f"Error collecting events: {str(e)}")
