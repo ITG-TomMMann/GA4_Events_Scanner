@@ -1209,12 +1209,12 @@ def main():
             "bye": "Bye! Feel free to come back if you have more questions!",
             "thank you": "You're welcome! Is there anything else I can help you with?",
             "thanks": "You're welcome! Is there anything else I can help you with?",
-            "no, that's all": "Thank you for using McArthurGlen RAG! Have a great day!",
-            "no, that's all!": "Thank you for using McArthurGlen RAG! Have a great day!",
-            "nothing for now": "Thank you for using McArthurGlen RAG! Have a great day!",
-            "nothing for now!": "Thank you for using McArthurGlen RAG! Have a great day!",
-            "thank you, goodbye": "Thank you for using McArthurGlen RAG! Have a great day!",
-            "thank you, goodbye!": "Thank you for using McArthurGlen RAG! Have a great day!"
+            "no, that's all": "Thank you for using JLR RAG! Have a great day!",
+            "no, that's all!": "Thank you for using JLR RAG! Have a great dWay!",
+            "nothing for now": "Thank you for using JLR RAG! Have a great day!",
+            "nothing for now!": "Thank you for using JLR RAG! Have a great day!",
+            "thank you, goodbye": "Thank you for using JLR RAG! Have a great day!",
+            "thank you, goodbye!": "Thank you for using JLR RAG! Have a great day!"
         }
         
         if prompt.lower() in greeting_responses:
