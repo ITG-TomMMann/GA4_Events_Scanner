@@ -12,11 +12,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-<<<<<<< HEAD
-=======
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.os_manager import ChromeType
->>>>>>> 6e343cdb2681187626590b255a6fa15d5f039ef5
 
 # ------------------------------------------------------------------
 # Helper Functions
