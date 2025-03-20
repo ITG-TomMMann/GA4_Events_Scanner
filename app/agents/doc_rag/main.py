@@ -11,10 +11,10 @@ from dotenv import load_dotenv
 import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
-from  app.agents.doc_rag.api.routes import router
-from  app.agents.doc_rag.config.settings import get_settings
-from  app.agents.doc_rag.utils.doc_embeddings import embedding_service
-from  app.agents.doc_rag.utils.gcp import gcp_service
+from app.agents.doc_rag.api.routes import router
+from app.agents.doc_rag.config.settings import get_settings
+from app.agents.doc_rag.utils.doc_embeddings import embedding_service
+from app.agents.doc_rag.utils.gcp import gcp_service
 
 # Load environment variables
 load_dotenv()
@@ -37,17 +37,17 @@ app = FastAPI(
     title=settings.API_TITLE,
     description=settings.API_DESCRIPTION,
     version=settings.API_VERSION,
-    docs_url="/docs" ,
-    redoc_url="/redoc" 
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
-# Add CORS middleware
+# Add CORS middleware with more permissive settings
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, specify specific origins
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
 )
 
 # Add request timing middleware
@@ -60,11 +60,23 @@ async def add_process_time_header(request: Request, call_next):
     response.headers["X-Process-Time"] = str(process_time)
     return response
 
-# Add global exception handler
+# Add global exception handler with better logging
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     """Handle all unhandled exceptions."""
     logger.error(f"Unhandled exception: {str(exc)}", exc_info=True)
+    
+    # Log the request path and method for debugging
+    logger.error(f"Request path: {request.url.path}, method: {request.method}")
+    
+    # Try to log request body for POST requests
+    if request.method == "POST":
+        try:
+            body = await request.json()
+            logger.error(f"Request body: {body}")
+        except Exception:
+            logger.error("Could not parse request body")
+    
     return JSONResponse(
         status_code=500,
         content={"detail": f"Internal server error: {str(exc)}"}
@@ -84,10 +96,22 @@ def startup_event():
         gcp_service.initialize()
         logger.info("GCP service initialized")
         
+        # Check Elasticsearch connection
+        from app.agents.doc_rag.models.vector_db import ContextualElasticVectorDB
+        from app.agents.doc_rag.models.rag import ContextualRAG
+        
+        # Try to initialize the vector database
+        vector_db = ContextualElasticVectorDB(settings.ELASTIC_INDEX_NAME)
+        logger.info("Vector database connection successful")
+        
+        # Try to initialize the RAG service
+        rag_service = ContextualRAG(vector_db)
+        logger.info("RAG service initialized successfully")
+        
         logger.info("All services initialized successfully")
     except Exception as e:
         logger.error(f"Error initializing services: {str(e)}", exc_info=True)
-        # We don't raise here to allow the app to start even if some services fail
+        # Don't raise here to allow the app to start even if some services fail
 
 # Include API routes
 app.include_router(router, prefix="/api")
@@ -102,13 +126,25 @@ async def root():
         "status": "online"
     }
 
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    """Health check endpoint."""
+    return {
+        "status": "healthy",
+        "version": settings.API_VERSION,
+        "debug_mode": settings.DEBUG
+    }
+
 # Main entrypoint for running with uvicorn
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", "8000"))
     
+    logger.info(f"Starting server on port {port}, debug mode: {settings.DEBUG}")
+    
     uvicorn.run(
-        "app:app",
+        "main:app",  # Change from "app:app" to "main:app"
         host="0.0.0.0",
         port=port,
         reload=settings.DEBUG

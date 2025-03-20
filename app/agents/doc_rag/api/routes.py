@@ -6,9 +6,9 @@ from typing import Dict, Any, List, Optional
 from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Query
 from pydantic import BaseModel
 
-from  app.agents.doc_rag.models.rag import ContextualRAG
-from  app.agents.doc_rag.models.vector_db import ContextualElasticVectorDB
-from  app.agents.doc_rag.config.settings import get_settings, Settings
+from app.agents.doc_rag.models.rag import ContextualRAG
+from app.agents.doc_rag.models.vector_db import ContextualElasticVectorDB
+from app.agents.doc_rag.config.settings import get_settings, Settings
 
 logger = logging.getLogger(__name__)
 
@@ -23,15 +23,25 @@ def get_vector_db() -> ContextualElasticVectorDB:
     global vector_db
     if vector_db is None:
         settings = get_settings()
-        vector_db = ContextualElasticVectorDB(settings.ELASTIC_INDEX_NAME)
+        try:
+            vector_db = ContextualElasticVectorDB(settings.ELASTIC_INDEX_NAME)
+            logger.info(f"Initialized vector database with index: {settings.ELASTIC_INDEX_NAME}")
+        except Exception as e:
+            logger.error(f"Error initializing vector database: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Error initializing vector database: {str(e)}")
     return vector_db
 
 def get_rag_service() -> ContextualRAG:
     """Get or initialize the RAG service."""
     global rag_service
     if rag_service is None:
-        db = get_vector_db()
-        rag_service = ContextualRAG(db)
+        try:
+            db = get_vector_db()
+            rag_service = ContextualRAG(db)
+            logger.info("Initialized RAG service")
+        except Exception as e:
+            logger.error(f"Error initializing RAG service: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Error initializing RAG service: {str(e)}")
     return rag_service
 
 # Request/Response models
@@ -86,6 +96,8 @@ async def query_rag(
         # Process the query
         answer, sources = rag.query(request.query)
         
+        logger.info(f"Query processed, answer generated with {len(sources)} sources")
+        
         # Format sources for response
         formatted_sources = []
         for source in sources:
@@ -93,7 +105,7 @@ async def query_rag(
                 "content": source["content"],
                 "doc_id": source["metadata"]["doc_id"],
                 "page_number": source["metadata"]["page_number"],
-                "score": source["score"]
+                "score": source.get("score", 0)
             })
         
         # Create metadata
@@ -102,13 +114,16 @@ async def query_rag(
             "sources_used": min(5, len(sources))
         }
         
-        return QueryResponse(
+        response = QueryResponse(
             answer=answer,
             sources=formatted_sources[:5],  # Limit to 5 sources in response
             metadata=metadata
         )
+        
+        logger.info("Successfully generated query response")
+        return response
     except Exception as e:
-        logger.error(f"Error processing query: {str(e)}")
+        logger.error(f"Error processing query: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Error processing query: {str(e)}")
 
 @router.post("/feedback")
@@ -154,6 +169,8 @@ async def process_documents(
         Job ID and confirmation message.
     """
     try:
+        logger.info(f"Starting document processing for {request.bucket_path}")
+        
         # Start processing in the background
         background_tasks.add_task(
             db.process_pdfs,
@@ -166,7 +183,7 @@ async def process_documents(
             "status": "processing"
         }
     except Exception as e:
-        logger.error(f"Error starting document processing: {str(e)}")
+        logger.error(f"Error starting document processing: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Error starting document processing: {str(e)}")
 
 @router.get("/documents/stats", response_model=DocumentStatsResponse)
@@ -180,10 +197,12 @@ async def get_document_statistics(
         Document statistics.
     """
     try:
+        logger.info("Fetching document statistics")
         stats = db.get_document_stats()
+        logger.info(f"Document statistics fetched: {stats['total_chunks']} chunks, {stats['unique_documents']} documents")
         return stats
     except Exception as e:
-        logger.error(f"Error getting document statistics: {str(e)}")
+        logger.error(f"Error getting document statistics: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Error getting document statistics: {str(e)}")
 
 @router.get("/search/analytics")
@@ -221,3 +240,28 @@ async def health_check():
         Health status.
     """
     return {"status": "healthy", "service": "jlr-rag-api"}
+
+# Add a test endpoint to verify Elasticsearch connection
+@router.get("/test_elastic")
+async def test_elastic_connection(
+    db: ContextualElasticVectorDB = Depends(get_vector_db)
+):
+    """
+    Test Elasticsearch connection.
+    
+    Returns:
+        Connection status.
+    """
+    try:
+        indices = db.es_client.indices.get(index=[db.index_name, db.bm25_index])
+        
+        return {
+            "status": "connected",
+            "indices": list(indices.keys()),
+            "vector_index": db.index_name,
+            "bm25_index": db.bm25_index,
+            "ping": db.es_client.ping()
+        }
+    except Exception as e:
+        logger.error(f"Error testing Elasticsearch connection: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Error testing Elasticsearch connection: {str(e)}")

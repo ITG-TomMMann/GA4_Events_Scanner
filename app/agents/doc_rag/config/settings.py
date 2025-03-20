@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     
     # Change this line:
     # Instead of evaluating the expression immediately, store it as a string
-    DEBUG: bool = "True"  # Default to True as a string
+    DEBUG: bool = os.getenv("DEBUG", "True").lower() in ("true", "1", "t")
    
     # Elasticsearch settings
     ELASTIC_HOST: str = os.getenv("ELASTIC_HOST", "localhost:9200")
