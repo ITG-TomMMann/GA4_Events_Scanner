@@ -22,7 +22,7 @@ dev-build:
 	@echo "Building minimal Docker containers for development..."
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
 
-# Production build
+# Production build 
 build:
 	@echo "Building Docker containers..."
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
